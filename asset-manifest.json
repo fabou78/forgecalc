@@ -1,11 +1,11 @@
 {
-  "main.js": "/forgecalc/static/js/main.89b37048.chunk.js",
-  "main.js.map": "/forgecalc/static/js/main.89b37048.chunk.js.map",
-  "static/js/1.d8662c7a.chunk.js": "/forgecalc/static/js/1.d8662c7a.chunk.js",
-  "static/js/1.d8662c7a.chunk.js.map": "/forgecalc/static/js/1.d8662c7a.chunk.js.map",
+  "main.js": "/forgecalc/static/js/main.8d2fcb02.chunk.js",
+  "main.js.map": "/forgecalc/static/js/main.8d2fcb02.chunk.js.map",
+  "static/js/1.50c6d48b.chunk.js": "/forgecalc/static/js/1.50c6d48b.chunk.js",
+  "static/js/1.50c6d48b.chunk.js.map": "/forgecalc/static/js/1.50c6d48b.chunk.js.map",
   "runtime~main.js": "/forgecalc/static/js/runtime~main.5c0fd2a6.js",
   "runtime~main.js.map": "/forgecalc/static/js/runtime~main.5c0fd2a6.js.map",
   "index.html": "/forgecalc/index.html",
-  "precache-manifest.2ac158e4f1a67daf04e19d5986a3d0db.js": "/forgecalc/precache-manifest.2ac158e4f1a67daf04e19d5986a3d0db.js",
+  "precache-manifest.2bdb6b74e82057a1a767b87b55480e2d.js": "/forgecalc/precache-manifest.2bdb6b74e82057a1a767b87b55480e2d.js",
   "service-worker.js": "/forgecalc/service-worker.js"
 }
