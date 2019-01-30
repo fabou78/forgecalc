@@ -6,14 +6,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Info from '@material-ui/icons/Info';
 
 
-const styles = theme => ({  
+const styles = theme => ({
   root: {
     flexGrow: 1,
     margin: 40,
     overflow: 'hidden',
     padding: `0 ${theme.spacing.unit * 3}px`,
   },
-  paper: {    
+  paper: {
     margin: `${theme.spacing.unit}px auto`,
     padding: theme.spacing.unit * 2,
   },
@@ -32,42 +32,59 @@ class Profit extends Component {
     levelcost: 0,
     overtake: 0,
     fpwin: 0,
-    error: false,
+    fielderror: false,
     remain: 0,
-    msg1: ''
+    msg1: '',
+    msgcolor: '#000000'
   }
 
   calculateResults = () => {
-    const { remain, overtake, fpwin } = this.state;
-    let realcost = Math.ceil((remain + overtake) / 2);
+    let { remain, overtake, fpwin } = this.state;
+    // Taking into account user blanking the field (backspace)
+    if (isNaN(remain)) remain = 0;
+    if (isNaN(overtake)) overtake = 0;
+    if (isNaN(fpwin)) fpwin = 0;
+    let bidcost = (Math.ceil((remain + overtake) / 2));
     let reward = Math.floor(fpwin * 1.9);
-    console.log('Realcost: ' + realcost);
-    console.log('Reward: ' + reward);
-    if (remain > realcost) {
-      if (reward > realcost) {
-        console.log('The profit will be ' + (reward - realcost));
-      } else if (reward === realcost) {
-        console.log('No profit nor loss on this transaction');
+    if (remain > bidcost) {
+      if (reward > bidcost) {
+        this.setState({
+          msg1: 'There will be a profit of ' + (reward - bidcost) + ' FP(s)',
+          msgcolor: '#177e0e'
+        })
+      } else if (reward === bidcost) {
+        this.setState({
+          msg1: 'No profit nor loss on this transaction',
+          msgcolor: '#fed029'
+        })
       } else {
-        console.log('There will be a loss on this transaction ' + (reward - realcost));
+        this.setState({
+          msg1: 'There will be a loss of ' + (reward - bidcost) + ' FP(s)',
+          msgcolor: '#b70431'
+        });
       }
     } else {
-      console.log('You can\'t win');
+      // There is still a small chance that the player win while leveling the GB
+      this.setState({ msg1: 'Player can\'t win', msgcolor: '#b70431' });
     }
   }
 
   handleChange = (event) => {
-    // TODO: If some field get back to zero set msg1 = ''
+    /*   TODO:
+       * nb for player to overtake can't be above level cost
+       * nb for player to overtake can't be above current deposit
+    */
+    this.setState({ msg1: '' });
     const { name, value } = event.target;
-    var intValue = parseInt(value, 10);
+    let intValue = parseInt(value, 10);
     if (intValue < 0) intValue = 0;
     this.setState({
       [name]: intValue
     }, () => {
       if (this.state.curdeposit >= this.state.levelcost) {
-        this.setState({ error: true });
-      } else{
-        this.setState({ error: false });
+        this.setState({ fielderror: true });
+      } else {
+        this.setState({ fielderror: false });
         this.setState({ remain: (this.state.levelcost - this.state.curdeposit) }, () => {
           this.calculateResults()
         });
@@ -89,7 +106,7 @@ class Profit extends Component {
             <Grid item xs={6}>
               <TextField
                 value={this.state.curdeposit}
-                error={this.state.error}
+                error={this.state.fielderror}
                 name='curdeposit'
                 label='Sum of current deposits'
                 type='number'
@@ -101,7 +118,7 @@ class Profit extends Component {
             <Grid item xs={6}>
               <TextField
                 value={this.state.levelcost}
-                error={this.state.error}
+                error={this.state.fielderror}
                 name='levelcost'
                 label='Level Cost'
                 type='number'
@@ -134,11 +151,11 @@ class Profit extends Component {
             </Grid>
             <Grid item xs={12}>
               <Typography className={classes.result} variant='body1' align='left' >
-              Number of FPs remaining to complete the level: {this.state.remain}
+                FPs remaining for current level: {(!isNaN(this.state.remain)) && this.state.remain}
               </Typography>
               {(this.state.msg1 !== '') &&
                 <Typography variant='body1' align='left' paragraph>
-                  {this.state.msg1}
+                  <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
                 </Typography>
               }
             </Grid>
@@ -147,7 +164,9 @@ class Profit extends Component {
             <Grid item xs={12} >
               <Typography color='secondary'>
                 <Info className={classes.icon} />
-                <span className={classes.icon}> Profit is calculated based on player having an Arc at level 80</span>
+                <span className={classes.icon}>
+                  &nbsp;Profit is calculated based on the investing player owning a level 80 Arc
+                </span>
               </Typography>
             </Grid>
           </Grid> { /* container */ }
