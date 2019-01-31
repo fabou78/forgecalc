@@ -1,24 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { Paper, Typography, TextField, Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import Info from '@material-ui/icons/Info';
 
+import { Line } from 'rc-progress';
+
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    margin: 40,
-    overflow: 'hidden',
-    padding: `0 ${theme.spacing.unit * 3}px`,
+  layout: {
+    width: 'auto',
+    marginTop: theme.spacing.unit * 5,
+    marginLeft: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2,
+    [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
   },
   paper: {
-    margin: `${theme.spacing.unit}px auto`,
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
     padding: theme.spacing.unit * 2,
+    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+      marginTop: theme.spacing.unit * 6,
+      marginBottom: theme.spacing.unit * 6,
+      padding: theme.spacing.unit * 3,
+    },
   },
   result: {
     marginTop: 30
+  },
+  info: {
+    marginTop: 20
+  },
+  progress: {
+    marginBottom: 15
   },
   icon: {
     verticalAlign: 'middle'
@@ -35,17 +54,26 @@ class Profit extends Component {
     fielderror: false,
     remain: 0,
     msg1: '',
-    msgcolor: '#000000'
+    msgcolor: '#000000',
+    reward: 0,
+    progressbar: 0
   }
 
   calculateResults = () => {
-    let { remain, overtake, fpwin } = this.state;
+    let { remain, overtake, fpwin, curdeposit, levelcost } = this.state;
     // Taking into account user blanking the field (backspace)
     if (isNaN(remain)) remain = 0;
     if (isNaN(overtake)) overtake = 0;
-    if (isNaN(fpwin)) fpwin = 0;
+    if (isNaN(curdeposit)) curdeposit = 0;
+    if (isNaN(levelcost)) levelcost = 0;
+    if (levelcost>0 && curdeposit>0) {
+      this.setState({progressbar: Math.ceil((curdeposit / levelcost)*100)});
+    } else {
+      this.setState({progressbar: 0});
+    }
     let bidcost = (Math.ceil((remain + overtake) / 2));
     let reward = Math.floor(fpwin * 1.9);
+    this.setState({reward});
     if (remain > bidcost) {
       if (reward > bidcost) {
         this.setState({
@@ -95,7 +123,7 @@ class Profit extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
           <Grid container spacing={24}>
             <Grid item xs={12}>
@@ -108,7 +136,7 @@ class Profit extends Component {
                 value={this.state.curdeposit}
                 error={this.state.fielderror}
                 name='curdeposit'
-                label='Sum of current deposits'
+                label='Current deposits'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -120,7 +148,7 @@ class Profit extends Component {
                 value={this.state.levelcost}
                 error={this.state.fielderror}
                 name='levelcost'
-                label='Level Cost'
+                label='Cost to level GB'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -131,7 +159,7 @@ class Profit extends Component {
               <TextField
                 value={this.state.overtake}
                 name='overtake'
-                label='FP nb of the player to overtake'
+                label='Amount to overtake'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -142,7 +170,7 @@ class Profit extends Component {
               <TextField
                 value={this.state.fpwin}
                 name='fpwin'
-                label='FP of the targeted place'
+                label='Targeted place reward'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -150,18 +178,62 @@ class Profit extends Component {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography className={classes.result} variant='body1' align='left' >
-                FPs remaining for current level: {(!isNaN(this.state.remain)) && this.state.remain}
-              </Typography>
-              {(this.state.msg1 !== '') &&
-                <Typography variant='body1' align='left' paragraph>
-                  <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
-                </Typography>
+              {(this.state.curdeposit!==0 && this.state.levelcost!==0 && this.state.fielderror===false) &&
+                <Fragment>
+                  <Typography variant='body1' align='left' >
+                    <strong>Summary: </strong>
+                  </Typography>
+                  <Typography variant='body1' align='center' >
+                    {this.state.curdeposit} / {this.state.levelcost}
+                  </Typography>
+                  <Line
+                    className={classes.progress}
+                    percent={this.state.progressbar}
+                    strokeLinecap='butt'
+                    trailWidth='3'
+                    strokeWidth='3'
+                    strokeColor='#215d1b'
+                  />
+                  {(!isNaN(this.state.remain) && (this.state.remain!==0)) &&
+                    <Typography variant='body1' align='left' >
+                      Remaining FP to level GB:
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.remain}
+                    </Typography>
+                  }
+                  {(!isNaN(this.state.overtake) && (this.state.overtake!==0)) &&
+                    <Typography variant='body1' align='left' >
+                      Player to overtake nb of FP:
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.overtake}
+                    </Typography>
+                  }
+                  {(!isNaN(this.state.reward) && (this.state.reward!==0)) &&
+                    <Typography variant='body1' align='left' >
+                      Reward (Arc bonus applied):
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.reward}
+                    </Typography>
+                  }
+                  {(this.state.msg1 !== '') &&
+                    <Fragment>
+                      <Typography className={classes.result} variant='body1' align='left' >
+                        <strong>Results: </strong>
+                      </Typography>
+                      <Typography variant='body1' align='left' >
+                        <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
+                      </Typography>
+                    </Fragment>
+                  }
+                </Fragment>
               }
             </Grid>
           </Grid> {/* container */}
-          <Grid className={classes.result} container spacing={0} direction='row' justify='flex-start'>
-            <Grid item xs={12} >
+          <Grid container spacing={0} direction='row' justify='flex-start'>
+            <Grid item className={classes.info} xs={12} >
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>

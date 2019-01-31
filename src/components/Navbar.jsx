@@ -7,6 +7,9 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
+  appBar: {
+    position: 'relative',
+  },
   productLogo: {
     display: 'inline-block',
     borderLeft: `1px solid ${theme.palette.grey['A100']}`,
@@ -28,17 +31,17 @@ const styles = theme => ({
 
 
 class Navbar extends Component {
-  
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position='static' color='primary'>
+        <AppBar className={classes.appBar} position='static' color='primary'>
           <Grid container spacing={24} alignItems='baseline'>
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                My Tools
+                <strong>My Tools</strong>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
