@@ -54,6 +54,7 @@ class Profit extends Component {
     fielderror: false,
     remain: 0,
     msg1: '',
+    msg2: false,
     msgcolor: '#000000',
     reward: 0,
     bidcost: 0,
@@ -81,22 +82,28 @@ class Profit extends Component {
       if (reward > bidcost) {
         this.setState({
           msg1: 'There will be a profit of ' + (reward - bidcost) + ' FP(s)',
-          msgcolor: '#177e0e'
+          msgcolor: '#177e0e',
+          msg2: true
         })
       } else if (reward === bidcost) {
         this.setState({
           msg1: 'No profit nor loss on this transaction',
-          msgcolor: '#fed029'
+          msgcolor: '#fed029',
+          msg2: true
         })
       } else {
         this.setState({
           msg1: 'There will be a loss of ' + (reward - bidcost) + ' FP(s)',
-          msgcolor: '#b70431'
+          msgcolor: '#b70431',
+          msg2: true
         });
       }
     } else {
       // There is still a small chance that the player win while leveling the GB
-      this.setState({ msg1: 'Player can\'t win', msgcolor: '#b70431' });
+      this.setState({ msg1: 'Player can\'t win',
+        msgcolor: '#b70431',
+        msg2: false
+      });
     }
   }
 
@@ -201,15 +208,15 @@ class Profit extends Component {
                     <Typography variant='body1' align='left' >
                       Remaining FP to level GB:
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {this.state.remain}
                     </Typography>
                   }
                   {(!isNaN(this.state.overtake) && (this.state.overtake!==0)) &&
                     <Typography variant='body1' align='left' >
-                      Player to overtake nb of FP:
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Nb of FP of player to overtake :
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;
                       {this.state.overtake}
                     </Typography>
                   }
@@ -217,7 +224,7 @@ class Profit extends Component {
                     <Typography variant='body1' align='left' >
                       Reward (Arc bonus applied):
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {this.state.reward}
                     </Typography>
                   }
@@ -226,9 +233,11 @@ class Profit extends Component {
                       <Typography className={classes.result} variant='body1' align='left' >
                         <strong>Results: </strong>
                       </Typography>
-                      <Typography>
-                        The player will need to invest {this.state.bidcost} FP while gaining {this.state.reward} FP.
-                      </Typography>
+                      {(this.state.msg2) &&
+                        <Typography>
+                          The player will need to invest {this.state.bidcost} FP while gaining {this.state.reward} FP.
+                        </Typography>
+                      }
                       <Typography variant='body1' align='left' >
                         <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
                       </Typography>
@@ -243,7 +252,7 @@ class Profit extends Component {
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>
-                  &nbsp;Profit is calculated based on the investing player owning a level 80 Arc
+                  &nbsp;Result is calculated based on the investing player owning a level 80 Arc
                 </span>
               </Typography>
             </Grid>
