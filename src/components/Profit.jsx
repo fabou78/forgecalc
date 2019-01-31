@@ -56,6 +56,7 @@ class Profit extends Component {
     msg1: '',
     msgcolor: '#000000',
     reward: 0,
+    bidcost: 0,
     progressbar: 0
   }
 
@@ -64,6 +65,7 @@ class Profit extends Component {
     // Taking into account user blanking the field (backspace)
     if (isNaN(remain)) remain = 0;
     if (isNaN(overtake)) overtake = 0;
+    if (isNaN(fpwin)) fpwin = 0;
     if (isNaN(curdeposit)) curdeposit = 0;
     if (isNaN(levelcost)) levelcost = 0;
     if (levelcost>0 && curdeposit>0) {
@@ -74,6 +76,7 @@ class Profit extends Component {
     let bidcost = (Math.ceil((remain + overtake) / 2));
     let reward = Math.floor(fpwin * 1.9);
     this.setState({reward});
+    this.setState({bidcost});
     if (remain > bidcost) {
       if (reward > bidcost) {
         this.setState({
@@ -222,6 +225,9 @@ class Profit extends Component {
                     <Fragment>
                       <Typography className={classes.result} variant='body1' align='left' >
                         <strong>Results: </strong>
+                      </Typography>
+                      <Typography>
+                        The player will need to invest {this.state.bidcost} FP while gaining {this.state.reward} FP.
                       </Typography>
                       <Typography variant='body1' align='left' >
                         <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
