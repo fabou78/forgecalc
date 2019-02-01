@@ -6,6 +6,7 @@ import { blue, pink } from '@material-ui/core/colors'
 
 import Profit from './components/Profit';
 import Navbar from './components/Navbar';
+import Blockplace from './components/Blockplace';
 
 
 const theme = createMuiTheme({
@@ -26,7 +27,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <Navbar />
-          <Profit />
+          <Blockplace />
         </MuiThemeProvider>
       </Fragment>
     );

@@ -45,72 +45,108 @@ const styles = theme => ({
 });
 
 
-class Profit extends Component {
+class Blockplace extends Component {
   state = {
-    curdeposit: 0,
-    levelcost: 0,
-    overtake: 0,
-    fpwin: 0,
+    curdeposit: 4,
+    levelcost: 7,
+    overtake: 3,
+    fpwin: 1,
+    myfp: 3,
     fielderror: false,
     remain: 0,
     msg1: '',
-    msg2: false,
+    msgflag: false,
     msgcolor: '#000000',
     reward: 0,
     bidcost: 0,
+    bank: 0,
     progressbar: 0
   }
 
   calculateResults = () => {
-    let { remain, overtake, fpwin, curdeposit, levelcost } = this.state;
+    let { remain, overtake, fpwin, curdeposit, levelcost, myfp } = this.state;
     // Taking into account user blanking the field (backspace)
     if (isNaN(remain)) remain = 0;
     if (isNaN(overtake)) overtake = 0;
     if (isNaN(fpwin)) fpwin = 0;
     if (isNaN(curdeposit)) curdeposit = 0;
     if (isNaN(levelcost)) levelcost = 0;
+    if (isNaN(myfp)) myfp = 0;
     if (levelcost>0 && curdeposit>0) {
       this.setState({progressbar: Math.ceil((curdeposit / levelcost)*100)});
     } else {
       this.setState({progressbar: 0});
     }
-    let bidcost = (Math.ceil((remain + overtake) / 2));
-    let reward = Math.floor(fpwin * 1.9);
-    this.setState({reward});
+    let bidcost = (Math.ceil((remain + overtake - myfp) / 2));
+    // let reward = Math.floor(fpwin * 1.9);
+    // this.setState({reward});
     this.setState({bidcost});
-    if (remain > bidcost) {
-      if (reward > bidcost) {
-        this.setState({
-          msg1: 'There will be a profit of ' + (reward - bidcost) + ' FP(s)',
-          msgcolor: '#177e0e',
-          msg2: true
-        })
-      } else if (reward === bidcost) {
-        this.setState({
-          msg1: 'No profit nor loss on this transaction',
-          msgcolor: '#fed029',
-          msg2: true
-        })
-      } else {
-        this.setState({
-          msg1: 'There will be a loss of ' + (reward - bidcost) + ' FP(s)',
-          msgcolor: '#b70431',
-          msg2: true
-        });
-      }
-    } else {
-      // There is still a small chance that the player win while leveling the GB
-      this.setState({ msg1: 'Player can\'t win',
+
+    if ((bidcost > remain) || (    bidcost + myfp < (overtake + remain - bidcost)     )) {
+      this.setState({ msg1: 'Player can\'t win win win',
         msgcolor: '#b70431',
-        msg2: false
+        msgflag: false
       });
+    } else {
+      if (fpwin !==0) {
+        if (fpwin > bidcost) {
+          this.setState({
+            msg1: 'You will win ' + (fpwin - bidcost) + ' FP on this transaction',
+            msgcolor: '#177e0e',
+            msgflag: true
+          });
+        } else if (fpwin < bidcost) {
+          this.setState({
+            msg1: 'You will lose ' + (bidcost - fpwin )+ ' FP on this transaction',
+            msgcolor: '#b70431',
+            msgflag: true
+          });
+        } else {
+          this.setState({
+            msg1: 'No profit nor loss on this transaction',
+            msgcolor: '#fed029',
+            msgflag: true
+          });
+        }
+      }
     }
+
+
+
+    // if (remain > bidcost) {
+    //   if (reward > bidcost) {
+    //     this.setState({
+    //       msg1: 'There will be a profit of ' + (reward - bidcost) + ' FP(s)',
+    //       msgcolor: '#177e0e',
+    //       msgflag: true
+    //     })
+    //   } else if (reward === bidcost) {
+    //     this.setState({
+    //       msg1: 'No profit nor loss on this transaction',
+    //       msgcolor: '#fed029',
+    //       msgflag: true
+    //     })
+    //   } else {
+    //     this.setState({
+    //       msg1: 'There will be a loss of ' + (reward - bidcost) + ' FP(s)',
+    //       msgcolor: '#b70431',
+    //       msgflag: true
+    //     });
+    //   }
+    // } else {
+    //   // There is still a small chance that the player win while leveling the GB
+    //   this.setState({ msg1: 'Player can\'t win',
+    //     msgcolor: '#b70431',
+    //     msgflag: false
+    //   });
+    // }
   }
 
   handleChange = (event) => {
     /*   TODO:
        * nb for player to overtake can't be above level cost
        * nb for player to overtake can't be above current deposit
+       * current deposit can't be smaller than (my invested FP + overtake)
     */
     this.setState({ msg1: '' });
     const { name, value } = event.target;
@@ -138,7 +174,7 @@ class Profit extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                Profit Calculator
+                Secure (Block) place
               </Typography>
             </Grid>
             <Grid item xs={6}>
@@ -169,7 +205,18 @@ class Profit extends Component {
               <TextField
                 value={this.state.overtake}
                 name='overtake'
-                label='Amount to overtake'
+                label='Player to overtake'
+                type='number'
+                fullWidth
+                margin='normal'
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                value={this.state.myfp}
+                name='myfp'
+                label='My invested FP'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -181,6 +228,17 @@ class Profit extends Component {
                 value={this.state.fpwin}
                 name='fpwin'
                 label='Targeted place reward'
+                type='number'
+                fullWidth
+                margin='normal'
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                value={this.state.bank}
+                name='bank'
+                label='Amount in the Bank'
                 type='number'
                 fullWidth
                 margin='normal'
@@ -220,12 +278,30 @@ class Profit extends Component {
                       {this.state.overtake}
                     </Typography>
                   }
-                  {(!isNaN(this.state.reward) && (this.state.reward!==0)) &&
+                  {(!isNaN(this.state.myfp) && (this.state.myfp!==0)) &&
                     <Typography variant='body1' align='left' >
-                      Reward (Arc bonus applied):
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      {this.state.reward}
+                      My currently invested FP:
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.myfp}
+                    </Typography>
+                  }
+                  {(!isNaN(this.state.fpwin) && (this.state.fpwin!==0)) &&
+                    <Typography variant='body1' align='left' >
+                      FP Reward:
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.fpwin}
+                    </Typography>
+                  }
+                  {(!isNaN(this.state.bank) && (this.state.bank!==0)) &&
+                    <Typography variant='body1' align='left' >
+                      Availaible FP in my bank:
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {this.state.bank}
                     </Typography>
                   }
                   {(this.state.msg1 !== '') &&
@@ -233,14 +309,19 @@ class Profit extends Component {
                       <Typography className={classes.result} variant='body1' align='left' >
                         <strong>Results: </strong>
                       </Typography>
-                      {(this.state.msg2) &&
-                        <Typography>
-                          The player will need to invest {this.state.bidcost} FP while gaining {this.state.reward} FP.
+                      {(this.state.msgflag) &&
+                        <Typography variant='body1' align='left'>
+                          You will need to invest {this.state.bidcost} FP to secure the place.
                         </Typography>
                       }
                       <Typography variant='body1' align='left' >
                         <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
                       </Typography>
+                      {(!isNaN(this.state.bank) && (this.state.bank!==0)) &&
+                        <Typography variant='body1' align='left' >
+                          You will need to take { (this.state.bidcost - this.state.bank) } FP from your inventory while
+                        </Typography>
+                      }
                     </Fragment>
                   }
                 </Fragment>
@@ -252,7 +333,7 @@ class Profit extends Component {
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>
-                  &nbsp;Result is calculated based on the investing player owning a level 80 Arc
+                  &nbsp;I have nothing to say here
                 </span>
               </Typography>
             </Grid>
@@ -263,4 +344,4 @@ class Profit extends Component {
   }
 }
 
-export default withStyles(styles)(Profit);
+export default withStyles(styles)(Blockplace);
