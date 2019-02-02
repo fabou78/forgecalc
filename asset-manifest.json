@@ -1,11 +1,11 @@
 {
-  "main.js": "/forgecalc/static/js/main.33eeba09.chunk.js",
-  "main.js.map": "/forgecalc/static/js/main.33eeba09.chunk.js.map",
+  "main.js": "/forgecalc/static/js/main.1cae3cc8.chunk.js",
+  "main.js.map": "/forgecalc/static/js/main.1cae3cc8.chunk.js.map",
   "static/js/1.fa021adb.chunk.js": "/forgecalc/static/js/1.fa021adb.chunk.js",
   "static/js/1.fa021adb.chunk.js.map": "/forgecalc/static/js/1.fa021adb.chunk.js.map",
   "runtime~main.js": "/forgecalc/static/js/runtime~main.5c0fd2a6.js",
   "runtime~main.js.map": "/forgecalc/static/js/runtime~main.5c0fd2a6.js.map",
   "index.html": "/forgecalc/index.html",
-  "precache-manifest.d93695e97a0938da1e594b380c6436da.js": "/forgecalc/precache-manifest.d93695e97a0938da1e594b380c6436da.js",
+  "precache-manifest.58b1918741acf58da7c4b8dca8600e73.js": "/forgecalc/precache-manifest.58b1918741acf58da7c4b8dca8600e73.js",
   "service-worker.js": "/forgecalc/service-worker.js"
 }
