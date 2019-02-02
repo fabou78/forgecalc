@@ -47,11 +47,11 @@ const styles = theme => ({
 
 class Blockplace extends Component {
   state = {
-    curdeposit: 4,
-    levelcost: 7,
-    overtake: 3,
-    fpwin: 1,
-    myfp: 3,
+    curdeposit: 0,
+    levelcost: 0,
+    overtake: 0,
+    fpwin: 0,
+    myfp: 0,
     fielderror: false,
     remain: 0,
     msg1: '',

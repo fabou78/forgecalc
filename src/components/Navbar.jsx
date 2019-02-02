@@ -33,7 +33,7 @@ const styles = theme => ({
 class Navbar extends Component {
 
   render() {
-    const { classes } = this.props;
+    const { classes, handleClick } = this.props;
     return (
       <div className={classes.root}>
         <AppBar className={classes.appBar} position='static' color='primary'>
@@ -48,8 +48,24 @@ class Navbar extends Component {
                   Some useful tools... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Typography>
               </div>
-              <Button variant="contained" color="secondary" className={classes.button}>Profit Calc</Button>
-              <Button variant="contained" color="secondary" className={classes.button}>Secure Place</Button>
+              <Button
+                name="secure"
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={handleClick}
+              >
+                Secure Place
+              </Button>
+              <Button
+                name="profit"
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={handleClick}
+              >
+                Profit Calc
+              </Button>
             </Toolbar>
           </Grid>
           </Grid>

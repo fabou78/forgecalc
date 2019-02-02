@@ -21,13 +21,33 @@ const theme = createMuiTheme({
 
 
 class App extends Component {
+  state = {
+    isblockplace: true
+  }
+
+  handleClick = (event) => {
+    const { name } = event.target;
+    if (name === 'secure') {
+      this.setState({ isblockplace: true });
+    };
+    if (name === 'profit') {
+      this.setState({ isblockplace: false });
+    };
+
+  }
+
   render() {
     return (
       <Fragment>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
-          <Navbar />
-          <Blockplace />
+          <Navbar handleClick={this.handleClick} />
+          { (this.state.isblockplace) &&
+            <Blockplace />
+          }
+          { (!this.state.isblockplace) &&
+            <Profit />
+          }
         </MuiThemeProvider>
       </Fragment>
     );
