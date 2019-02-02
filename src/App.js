@@ -26,14 +26,13 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    const { name } = event.target;
+    const { name } = event.currentTarget;
     if (name === 'secure') {
       this.setState({ isblockplace: true });
     };
     if (name === 'profit') {
       this.setState({ isblockplace: false });
     };
-
   }
 
   render() {
