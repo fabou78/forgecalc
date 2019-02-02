@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    const { name } = event.currentTarget;
+    const { name } = event.Target;
     if (name === 'secure') {
       this.setState({ isblockplace: true });
     };
