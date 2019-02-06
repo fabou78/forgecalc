@@ -31,40 +31,42 @@ const styles = theme => ({
     },
   },
   result: {
-    marginTop: 30
+    marginTop: 5
   },
-  info: {
+  summary: {
+    marginLeft: 10
+  },
+  infogrid: {
     marginTop: 20
   },
   progress: {
     marginBottom: 15
-  },
-  icon: {
-    verticalAlign: 'middle'
   }
 });
 
 
 class Blockplace extends Component {
   state = {
-    curdeposit: 0,
-    levelcost: 0,
-    overtake: 0,
+    curdeposit: 10,
+    levelcost: 20,
+    overtake: 10,
     fpwin: 0,
     myfp: 0,
+    bank: 0,
     fielderror: false,
     remain: 0,
+    msg: '',
     msg1: '',
-    msgflag: false,
+    msg2: '',
+    msg1flag: false, // True if win, lose or stale. False if player can't win
     msgcolor: '#000000',
-    reward: 0,
-    bidcost: 0,
-    bank: 0,
-    progressbar: 0
+    reachfp: 0,
+    progressbar: 0,
+    delta: 0
   }
 
   calculateResults = () => {
-    let { remain, overtake, fpwin, curdeposit, levelcost, myfp } = this.state;
+    let { remain, overtake, fpwin, curdeposit, levelcost, myfp, bank } = this.state;
     // Taking into account user blanking the field (backspace)
     if (isNaN(remain)) remain = 0;
     if (isNaN(overtake)) overtake = 0;
@@ -72,74 +74,79 @@ class Blockplace extends Component {
     if (isNaN(curdeposit)) curdeposit = 0;
     if (isNaN(levelcost)) levelcost = 0;
     if (isNaN(myfp)) myfp = 0;
+    if (isNaN(bank)) bank = 0;
     if (levelcost>0 && curdeposit>0) {
       this.setState({progressbar: Math.ceil((curdeposit / levelcost)*100)});
     } else {
       this.setState({progressbar: 0});
-    }
-    let bidcost = (Math.ceil((remain + overtake - myfp) / 2));
-    // let reward = Math.floor(fpwin * 1.9);
-    // this.setState({reward});
-    this.setState({bidcost});
 
-    if ((bidcost > remain) || (    bidcost + myfp < (overtake + remain - bidcost)     )) {
-      this.setState({ msg1: 'Player can\'t win win win',
+    }
+    let reachfp = (Math.ceil((remain + overtake) / 2));
+    let delta = reachfp - myfp;
+    this.setState({reachfp, delta});
+
+
+    // Checking if the player can secure the place
+    // If the player can secure the place then it can be a win, loss or stale on FP spending
+    console.clear();
+    console.log('reachfp > remain: ' + (reachfp > remain ) );
+    console.log('reachfp <= overtake :' + (reachfp <= overtake));
+    console.log('--------------------------------------');
+    if ((reachfp > remain ) || reachfp <= (overtake - myfp) ) {
+      this.setState({ msg1: 'You can\'t secure the place',
         msgcolor: '#b70431',
-        msgflag: false
+        msg1flag: false
       });
     } else {
-      if (fpwin !==0) {
-        if (fpwin > bidcost) {
+      if (myfp > (overtake + remain)) {
+        this.setState({
+          msg: 'Your place is already secured you don\'t need to put any more FP'
+        });
+      } else {
+        this.setState({
+          msg: 'To secure the place, you will need to reach a total of ' + reachfp + ' FP'
+        });
+        // Checking for win, loss or stale
+        if (fpwin !==0) {
+          if (fpwin > delta) {
+            this.setState({
+              msg1: 'You will win ' + (fpwin - delta) + ' FP on this transaction',
+              msgcolor: '#177e0e',
+              msg1flag: true
+            });
+          } else if (fpwin < delta) {
+            this.setState({
+              msg1: 'If you secure the place you will lose ' + (delta - fpwin )+ ' FP',
+              msgcolor: '#b70431',
+              msg1flag: true
+            });
+          } else {
+            this.setState({
+              msg1: 'You will not lose or gain any FP if you secure the place',
+              msgcolor: '#fed029',
+              msg1flag: true
+            });
+          }
+        }
+        // Checking for inventory and bank additional information
+        if (bank === 0) {
+          // Take all from inventory
           this.setState({
-            msg1: 'You will win ' + (fpwin - bidcost) + ' FP on this transaction',
-            msgcolor: '#177e0e',
-            msgflag: true
+            msg2: 'With 0 FP in the bank the whole amout will need to come from inventory'
           });
-        } else if (fpwin < bidcost) {
+        } else if (bank >= delta) {
+          // no need to take anything from inventory
           this.setState({
-            msg1: 'You will lose ' + (bidcost - fpwin )+ ' FP on this transaction',
-            msgcolor: '#b70431',
-            msgflag: true
+            msg2: 'You don\'t need to take any FP from inventory'
           });
         } else {
+          // soustraction
           this.setState({
-            msg1: 'No profit nor loss on this transaction',
-            msgcolor: '#fed029',
-            msgflag: true
+            msg2: 'You will need to take out ' + (delta - bank) + ' FP from inventory'
           });
         }
-      }
+      } // (reachfp <= 0) mean the place is already secured
     }
-
-
-
-    // if (remain > bidcost) {
-    //   if (reward > bidcost) {
-    //     this.setState({
-    //       msg1: 'There will be a profit of ' + (reward - bidcost) + ' FP(s)',
-    //       msgcolor: '#177e0e',
-    //       msgflag: true
-    //     })
-    //   } else if (reward === bidcost) {
-    //     this.setState({
-    //       msg1: 'No profit nor loss on this transaction',
-    //       msgcolor: '#fed029',
-    //       msgflag: true
-    //     })
-    //   } else {
-    //     this.setState({
-    //       msg1: 'There will be a loss of ' + (reward - bidcost) + ' FP(s)',
-    //       msgcolor: '#b70431',
-    //       msgflag: true
-    //     });
-    //   }
-    // } else {
-    //   // There is still a small chance that the player win while leveling the GB
-    //   this.setState({ msg1: 'Player can\'t win',
-    //     msgcolor: '#b70431',
-    //     msgflag: false
-    //   });
-    // }
   }
 
   handleChange = (event) => {
@@ -148,7 +155,7 @@ class Blockplace extends Component {
        * nb for player to overtake can't be above current deposit
        * current deposit can't be smaller than (my invested FP + overtake)
     */
-    this.setState({ msg1: '' });
+    this.setState({ msg:'', msg1: '', msg2: '' });
     const { name, value } = event.target;
     let intValue = parseInt(value, 10);
     if (intValue < 0) intValue = 0;
@@ -167,7 +174,11 @@ class Blockplace extends Component {
   }
 
   render() {
+    /*   TODO:
+       * Implement tooltips on summary fields (help for usage)
+    */
     const { classes } = this.props;
+    const { delta, reachfp, bank, msg, msg1, msg2 } = this.state;
     return (
       <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
@@ -214,17 +225,6 @@ class Blockplace extends Component {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                value={this.state.myfp}
-                name='myfp'
-                label='My invested FP'
-                type='number'
-                fullWidth
-                margin='normal'
-                onChange={this.handleChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
                 value={this.state.fpwin}
                 name='fpwin'
                 label='Targeted place reward'
@@ -236,7 +236,18 @@ class Blockplace extends Component {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                value={this.state.bank}
+                value={this.state.myfp}
+                name='myfp'
+                label='My invested FP'
+                type='number'
+                fullWidth
+                margin='normal'
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                value={bank}
                 name='bank'
                 label='Amount in the Bank'
                 type='number'
@@ -245,7 +256,7 @@ class Blockplace extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12}>   { /* Summary  */ }
               {(this.state.curdeposit!==0 && this.state.levelcost!==0 && this.state.fielderror===false) &&
                 <Fragment>
                   <Typography variant='body1' align='left' >
@@ -257,84 +268,132 @@ class Blockplace extends Component {
                   <Line
                     className={classes.progress}
                     percent={this.state.progressbar}
-                    strokeLinecap='butt'
+                    strokeLinecap='square'
                     trailWidth='3'
                     strokeWidth='3'
-                    strokeColor='#215d1b'
+                    strokeColor='#47933f'
                   />
-                  {(!isNaN(this.state.remain) && (this.state.remain!==0)) &&
+                </Fragment>
+              }
+            </Grid>
+            <Grid container spacing={0}>
+              {(!isNaN(this.state.remain) && (this.state.remain!==0)) &&
+                <Fragment>
+                  <Grid item className={classes.summary} xs={6}>
                     <Typography variant='body1' align='left' >
                       Remaining FP to level GB:
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography variant='body1' align='left' >
                       {this.state.remain}
                     </Typography>
-                  }
-                  {(!isNaN(this.state.overtake) && (this.state.overtake!==0)) &&
+                  </Grid>
+                </Fragment>
+              }
+              {(!isNaN(this.state.overtake) && (this.state.overtake!==0)) &&
+                <Fragment>
+                  <Grid item className={classes.summary} xs={6}>
                     <Typography variant='body1' align='left' >
                       Nb of FP of player to overtake :
-                      &nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography variant='body1' align='left' >
                       {this.state.overtake}
                     </Typography>
-                  }
-                  {(!isNaN(this.state.myfp) && (this.state.myfp!==0)) &&
+                  </Grid>
+                </Fragment>
+              }
+              {(!isNaN(this.state.fpwin) && (this.state.fpwin!==0)) &&
+                <Fragment>
+                  <Grid item className={classes.summary} xs={6}>
                     <Typography variant='body1' align='left' >
-                      My currently invested FP:
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      {this.state.myfp}
+                      Targeted place reward:
                     </Typography>
-                  }
-                  {(!isNaN(this.state.fpwin) && (this.state.fpwin!==0)) &&
+                  </Grid>
+                  <Grid item xs={5}>
                     <Typography variant='body1' align='left' >
-                      FP Reward:
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {this.state.fpwin}
                     </Typography>
-                  }
-                  {(!isNaN(this.state.bank) && (this.state.bank!==0)) &&
+                  </Grid>
+                </Fragment>
+              }
+              {(!isNaN(this.state.myfp) && (this.state.myfp!==0)) &&
+                <Fragment>
+                  <Grid item className={classes.summary} xs={6}>
+                    <Typography variant='body1' align='left' >
+                      My currently invested FP:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography variant='body1' align='left' >
+                      {this.state.myfp}
+                    </Typography>
+                  </Grid>
+                </Fragment>
+              }
+              {(!isNaN(bank) && (bank!==0)) &&
+                <Fragment>
+                  <Grid item className={classes.summary} xs={6}>
                     <Typography variant='body1' align='left' >
                       Availaible FP in my bank:
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      {this.state.bank}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Typography variant='body1' align='left' >
+                      {bank}
+                  </Typography>
+                  </Grid>
+                </Fragment>
+              }
+            </Grid>   {/* container */}
+            <Grid item xs={12}>   {/* Result */}
+              {((msg !== '') || (msg1!=='')) &&
+                <Fragment>
+                  <Typography className={classes.result} variant='body1' align='left' >
+                    <strong>Results: </strong>
+                  </Typography>
+                  <Typography variant='body1' align='left' >
+                    {msg}
+                  </Typography>
+                  {(msg1 !== '') &&
+                    <Typography variant='body1' align='left' >
+                      <strong><span style={{ color: `${this.state.msgcolor}` }}>{msg1}</span></strong>
                     </Typography>
                   }
-                  {(this.state.msg1 !== '') &&
-                    <Fragment>
-                      <Typography className={classes.result} variant='body1' align='left' >
-                        <strong>Results: </strong>
-                      </Typography>
-                      {(this.state.msgflag) &&
-                        <Typography variant='body1' align='left'>
-                          You will need to invest {this.state.bidcost} FP to secure the place.
-                        </Typography>
-                      }
-                      <Typography variant='body1' align='left' >
-                        <strong><span style={{ color: `${this.state.msgcolor}` }}>{this.state.msg1}</span></strong>
-                      </Typography>
-                      {(!isNaN(this.state.bank) && (this.state.bank!==0)) &&
-                        <Typography variant='body1' align='left' >
-                          You will need to take { (this.state.bidcost - this.state.bank) } FP from your inventory while
-                        </Typography>
-                      }
-                    </Fragment>
+                </Fragment>
+              }
+            </Grid>
+            <Grid item xs={12}>   {/* Additional Info */}
+              {(msg1 !== '' && (this.state.msg1flag)) &&
+                <Fragment>
+                  <Typography className={classes.result} variant='body1' align='left' >
+                    <strong>Additional info: </strong>
+                  </Typography>
+                  {(this.state.msg1flag) &&
+                    <Typography variant='body1' align='left'>
+                      You need to invest {delta} more FP to reach the required {reachfp} FP
+                    </Typography>
+                  }
+                  {(msg2!=='') &&
+                    <Typography variant='body1' align='left' >
+                      {msg2}
+                    </Typography>
                   }
                 </Fragment>
               }
             </Grid>
           </Grid> {/* container */}
-          <Grid container spacing={0} direction='row' justify='flex-start'>
-            <Grid item className={classes.info} xs={12} >
-              <Typography color='secondary'>
-                <Info className={classes.icon} />
-                <span className={classes.icon}>
-                  &nbsp;I have nothing to say here
-                </span>
+          <Grid container className={classes.infogrid} spacing={0}>
+            <Grid item  xs={1} >
+              <Typography align='center' color='secondary'>
+                <Info />
+              </Typography>
+            </Grid>
+            <Grid item xs={11} >
+              <Typography align='left' color='secondary'>
+                It is assumed that the player has not used any FP from inventory previously
               </Typography>
             </Grid>
           </Grid> { /* container */ }
