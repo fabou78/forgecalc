@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/forgecalc/static/js/runtime~main.5c0fd2a6.js"
   },
   {
-    "revision": "322b4e1737abf2316a66",
-    "url": "/forgecalc/static/js/main.322b4e17.chunk.js"
+    "revision": "68b0281aec17c247c906",
+    "url": "/forgecalc/static/js/main.68b0281a.chunk.js"
   },
   {
     "revision": "fa021adb6e57eb8c96bf",
     "url": "/forgecalc/static/js/1.fa021adb.chunk.js"
   },
   {
-    "revision": "4ed4a908c96e939f0e1a307f3c5387af",
+    "revision": "79daec677d1fe0a2eae06cfc924d2976",
     "url": "/forgecalc/index.html"
   }
 ];
