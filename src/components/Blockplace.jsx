@@ -185,7 +185,7 @@ class Blockplace extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                Secure (Block) place
+                Secure (sim test) place
               </Typography>
             </Grid>
             <Grid item xs={6}>
