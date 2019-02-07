@@ -62,7 +62,8 @@ class Blockplace extends Component {
     msgcolor: '#000000',
     reachfp: 0,
     progressbar: 0,
-    delta: 0
+    reqfp: 0,
+    simfp: 0
   }
 
   calculateResults = () => {
@@ -82,72 +83,100 @@ class Blockplace extends Component {
 
     }
     let reachfp = (Math.ceil((remain + overtake) / 2));
-    let delta = reachfp - myfp;
-    this.setState({reachfp, delta});
-
+    this.setState({reachfp});
 
     // Checking if the player can secure the place
     // If the player can secure the place then it can be a win, loss or stale on FP spending
+    let simfp;
     console.clear();
-    console.log('reachfp > remain: ' + (reachfp > remain ) );
-    console.log('reachfp <= overtake :' + (reachfp <= overtake));
-    console.log('--------------------------------------');
-    if ((reachfp > remain ) || reachfp <= (overtake - myfp) ) {
-      this.setState({ msg1: 'You can\'t secure the place',
-        msgcolor: '#b70431',
-        msg1flag: false
+    if (myfp > (overtake + remain)) {
+      this.setState({
+        msg: 'Your place is already secured you don\'t need to put any more FP'
       });
     } else {
-      if (myfp > (overtake + remain)) {
-        this.setState({
-          msg: 'Your place is already secured you don\'t need to put any more FP'
-        });
-      } else {
-        this.setState({
-          msg: 'To secure the place, you will need to reach a total of ' + reachfp + ' FP'
-        });
-        // Checking for win, loss or stale
-        if (fpwin !==0) {
-          if (fpwin > delta) {
-            this.setState({
-              msg1: 'You will win ' + (fpwin - delta) + ' FP on this transaction',
-              msgcolor: '#177e0e',
-              msg1flag: true
+      for (var inc = 1; inc <= remain; inc++) {
+        simfp = myfp + inc ;
+        // console.log('simfp: ' + simfp);
+        // console.log('overtake: ' + overtake)
+        // console.log('remain: ' + remain);
+        // console.log('inc: ' + inc);
+        // console.log('--------------------')
+
+        if (simfp >= (overtake + (remain - inc))) {
+          // console.log('first level');
+          if ((simfp === overtake) && (inc === remain )) {
+            // console.log('second level');
+            // console.log('simfp: ' + simfp);
+            this.setState({ msg1: 'You can\'t secure the place',
+            msgcolor: '#b70431',
+            msg1flag: false
             });
-          } else if (fpwin < delta) {
-            this.setState({
-              msg1: 'If you secure the place you will lose ' + (delta - fpwin )+ ' FP',
-              msgcolor: '#b70431',
-              msg1flag: true
-            });
+            break;
           } else {
+            // console.log('third level');
+            this.setState({simfp});
             this.setState({
-              msg1: 'You will not lose or gain any FP if you secure the place',
-              msgcolor: '#fed029',
-              msg1flag: true
+              msg: 'To secure the place, you will need to reach a total of ' + simfp + ' FP'
             });
+            // Checking for win, loss or stale
+            if (fpwin !==0) {
+              var reqfp = simfp - myfp; // required FP to win
+              this.setState({reqfp});
+              if (fpwin > reqfp) {
+                this.setState({
+                  msg1: 'You will win ' + (fpwin - reqfp) + ' FP on this transaction',
+                  msgcolor: '#177e0e',
+                  msg1flag: true
+                });
+              } else if (fpwin < reqfp) {
+                this.setState({
+                  msg1: 'If you secure the place you will lose ' + (reqfp - fpwin )+ ' FP',
+                  msgcolor: '#b70431',
+                  msg1flag: true
+                });
+              } else {
+                this.setState({
+                  msg1: 'You will not lose or gain any FP if you secure the place',
+                  msgcolor: '#fed029',
+                  msg1flag: true
+                });
+              }
+            }
+            break;
           }
+        // }
+        } else if (myfp + remain <= overtake) {
+          // console.log('fourth level');
+          this.setState({ msg1: 'You can\'t secure the place',
+          msgcolor: '#b70431',
+          msg1flag: false
+          });
+          break;
         }
-        // Checking for inventory and bank additional information
-        if (bank === 0) {
-          // Take all from inventory
-          this.setState({
-            msg2: 'With 0 FP in the bank the whole amout will need to come from inventory'
-          });
-        } else if (bank >= delta) {
-          // no need to take anything from inventory
-          this.setState({
-            msg2: 'You don\'t need to take any FP from inventory'
-          });
-        } else {
-          // soustraction
-          this.setState({
-            msg2: 'You will need to take out ' + (delta - bank) + ' FP from inventory'
-          });
-        }
-      } // (reachfp <= 0) mean the place is already secured
+
+      } // For loop
     }
-  }
+
+    // Checking for inventory and bank additional information
+    if (bank === 0) {
+      // Take all from inventory
+      this.setState({
+        msg2: 'With 0 FP in the bank the whole amout will need to come from inventory'
+      });
+    } else if (bank >= reqfp) {
+      // no need to take anything from inventory
+      this.setState({
+        msg2: 'You don\'t need to take any FP from inventory'
+      });
+    } else {
+      // soustraction
+      this.setState({
+        msg2: 'You will need to take out ' + (reqfp - bank) + ' FP from inventory'
+      });
+    }
+  } // (reachfp <= 0) mean the place is already secured
+
+
 
   handleChange = (event) => {
     /*   TODO:
@@ -178,14 +207,14 @@ class Blockplace extends Component {
        * Implement tooltips on summary fields (help for usage)
     */
     const { classes } = this.props;
-    const { delta, reachfp, bank, msg, msg1, msg2 } = this.state;
+    const { reqfp, simfp, bank, msg, msg1, msg2 } = this.state;
     return (
       <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                Secure (sim test) place
+                Secure (Block) place
               </Typography>
             </Grid>
             <Grid item xs={6}>
@@ -373,7 +402,7 @@ class Blockplace extends Component {
                   </Typography>
                   {(this.state.msg1flag) &&
                     <Typography variant='body1' align='left'>
-                      You need to invest {delta} more FP to reach the required {reachfp} FP
+                      You need to invest {reqfp} more FP to reach the required {simfp} FP
                     </Typography>
                   }
                   {(msg2!=='') &&

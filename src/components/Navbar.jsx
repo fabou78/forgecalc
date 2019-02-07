@@ -27,6 +27,10 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
+  version: {
+    fontSize: '14px',
+    fontStyle: 'italic'
+  }
 });
 
 
@@ -41,7 +45,7 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>My Tools</strong>
+                <strong>My Tools</strong> <span className={classes.version}> v1.0</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
