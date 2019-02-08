@@ -58,8 +58,10 @@ class Blockplace extends Component {
     msg: '',
     msg1: '',
     msg2: '',
+    msg3: '',
     msg1flag: false, // True if win, lose or stale. False if player can't win
     msgcolor: '#000000',
+    msg3color: '#000000',
     reachfp: 0,
     progressbar: 0,
     reqfp: 0,
@@ -174,7 +176,29 @@ class Blockplace extends Component {
         msg2: 'You will need to take out ' + (reqfp - bank) + ' FP from inventory'
       });
     }
-  } // (reachfp <= 0) mean the place is already secured
+
+    if ((reqfp - (bank + fpwin) > 0)) {
+      this.setState({
+        msg3: 'Your inventory will decrease by ' + (reqfp - (bank + fpwin)) + ' FP' ,
+        msg3color: '#b70431',
+        // msg1flag: false
+        });
+    } else if ((reqfp - (bank + fpwin) === 0)) {
+      this.setState({
+        msg3: 'Your inventory will remain the same' ,
+        msg3color: '#fed029',
+        // msg1flag: false
+      });
+    } else {
+      if (fpwin !== 0) {
+        this.setState({
+          msg3: 'Inventory will increase by ' + (fpwin - (reqfp - bank)) + ' FP' ,
+          msg3color: '#177e0e',
+          // msg1flag: false
+        });
+      }
+    }
+  } // calculateResults
 
 
 
@@ -184,7 +208,7 @@ class Blockplace extends Component {
        * nb for player to overtake can't be above current deposit
        * current deposit can't be smaller than (my invested FP + overtake)
     */
-    this.setState({ msg:'', msg1: '', msg2: '' });
+    this.setState({ msg:'', msg1: '', msg2: '', msg3:'' });
     const { name, value } = event.target;
     let intValue = parseInt(value, 10);
     if (intValue < 0) intValue = 0;
@@ -207,7 +231,7 @@ class Blockplace extends Component {
        * Implement tooltips on summary fields (help for usage)
     */
     const { classes } = this.props;
-    const { reqfp, simfp, bank, msg, msg1, msg2 } = this.state;
+    const { reqfp, simfp, bank, msg, msg1, msg2, msg3 } = this.state;
     return (
       <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
@@ -406,9 +430,14 @@ class Blockplace extends Component {
                     </Typography>
                   }
                   {(msg2!=='') &&
-                    <Typography variant='body1' align='left' >
-                      {msg2}
-                    </Typography>
+                    <Fragment>
+                      <Typography variant='body1' align='left' >
+                        {msg2}
+                      </Typography>
+                      <Typography variant='body1' align='left' >
+                      <strong><span style={{ color: `${this.state.msg3color}` }}>{msg3}</span></strong>
+                      </Typography>
+                    </Fragment>
                   }
                 </Fragment>
               }

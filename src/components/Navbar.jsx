@@ -45,11 +45,11 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>My Tools</strong> <span className={classes.version}> v1.0</span>
+                <strong>My Tools</strong> <span className={classes.version}> v1.1</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
-                  Some useful tools... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Hopefully useful... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Typography>
               </div>
               <Button
