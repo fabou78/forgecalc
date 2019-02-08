@@ -82,11 +82,9 @@ class Blockplace extends Component {
       this.setState({progressbar: Math.ceil((curdeposit / levelcost)*100)});
     } else {
       this.setState({progressbar: 0});
-
     }
     let reachfp = (Math.ceil((remain + overtake) / 2));
     this.setState({reachfp});
-
     // Checking if the player can secure the place
     // If the player can secure the place then it can be a win, loss or stale on FP spending
     let simfp;
@@ -98,24 +96,14 @@ class Blockplace extends Component {
     } else {
       for (var inc = 1; inc <= remain; inc++) {
         simfp = myfp + inc ;
-        // console.log('simfp: ' + simfp);
-        // console.log('overtake: ' + overtake)
-        // console.log('remain: ' + remain);
-        // console.log('inc: ' + inc);
-        // console.log('--------------------')
-
         if (simfp >= (overtake + (remain - inc))) {
-          // console.log('first level');
           if ((simfp === overtake) && (inc === remain )) {
-            // console.log('second level');
-            // console.log('simfp: ' + simfp);
             this.setState({ msg1: 'You can\'t secure the place',
             msgcolor: '#b70431',
             msg1flag: false
             });
             break;
           } else {
-            // console.log('third level');
             this.setState({simfp});
             this.setState({
               msg: 'To secure the place, you will need to reach a total of ' + simfp + ' FP'
@@ -146,61 +134,53 @@ class Blockplace extends Component {
             }
             break;
           }
-        // }
         } else if (myfp + remain <= overtake) {
-          // console.log('fourth level');
           this.setState({ msg1: 'You can\'t secure the place',
           msgcolor: '#b70431',
           msg1flag: false
           });
           break;
         }
-
       } // For loop
     }
-
     // Checking for inventory and bank additional information
     if (bank === 0) {
-      // Take all from inventory
       this.setState({
         msg2: 'With 0 FP in the bank the whole amout will need to come from inventory'
       });
     } else if (bank >= reqfp) {
-      // no need to take anything from inventory
       this.setState({
         msg2: 'You don\'t need to take any FP from inventory'
       });
     } else {
-      // soustraction
       this.setState({
         msg2: 'You will need to take out ' + (reqfp - bank) + ' FP from inventory'
       });
     }
-
     if ((reqfp - (bank + fpwin) > 0)) {
       this.setState({
         msg3: 'Your inventory will decrease by ' + (reqfp - (bank + fpwin)) + ' FP' ,
         msg3color: '#b70431',
-        // msg1flag: false
         });
     } else if ((reqfp - (bank + fpwin) === 0)) {
       this.setState({
         msg3: 'Your inventory will remain the same' ,
         msg3color: '#fed029',
-        // msg1flag: false
       });
     } else {
       if (fpwin !== 0) {
+        if (bank >= reqfp) {
+          var incamount = fpwin;
+        } else {
+          var incamount = (fpwin - (reqfp - bank));
+        }
         this.setState({
-          msg3: 'Inventory will increase by ' + (fpwin - (reqfp - bank)) + ' FP' ,
+          msg3: 'Inventory will increase by ' + incamount + ' FP' ,
           msg3color: '#177e0e',
-          // msg1flag: false
         });
       }
     }
   } // calculateResults
-
-
 
   handleChange = (event) => {
     /*   TODO:
