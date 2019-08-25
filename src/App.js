@@ -7,6 +7,7 @@ import { blue, pink } from '@material-ui/core/colors'
 import Profit from './components/Profit';
 import Navbar from './components/Navbar';
 import Blockplace from './components/Blockplace';
+import Fasttrack from './components/Fasttrack';
 
 
 const theme = createMuiTheme({
@@ -22,16 +23,19 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    isblockplace: true
+    loadpage: 'fasttk'
   }
 
   handleClick = (event) => {
     const { name } = event.currentTarget;
     if (name === 'secure') {
-      this.setState({ isblockplace: true });
+      this.setState({ loadpage: 'secure' });
     };
     if (name === 'profit') {
-      this.setState({ isblockplace: false });
+      this.setState({ loadpage: 'profit' });
+    };
+    if (name === 'fasttk') {
+      this.setState({ loadpage: 'fasttk' });
     };
   }
 
@@ -41,11 +45,14 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <Navbar handleClick={this.handleClick} />
-          { (this.state.isblockplace) &&
+          { (this.state.loadpage === 'secure') &&
             <Blockplace />
           }
-          { (!this.state.isblockplace) &&
+          { (this.state.loadpage === 'profit') &&
             <Profit />
+          }
+          { (this.state.loadpage === 'fasttk') &&
+            <Fasttrack />
           }
         </MuiThemeProvider>
       </Fragment>

@@ -169,10 +169,11 @@ class Blockplace extends Component {
       });
     } else {
       if (fpwin !== 0) {
+        var incamount;
         if (bank >= reqfp) {
-          var incamount = fpwin;
+          incamount = fpwin;
         } else {
-          var incamount = (fpwin - (reqfp - bank));
+          incamount = (fpwin - (reqfp - bank));
         }
         this.setState({
           msg3: 'Inventory will increase by ' + incamount + ' FP' ,
