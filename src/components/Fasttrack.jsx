@@ -148,8 +148,8 @@ class Fasttrack extends Component {
         <Paper className={classes.paper} elevation={4}>
           <Grid container spacing={24}>
             <Grid item xs={12}>
-              <Typography variant='h4' align='center' color='secondary'>
-                GB FastTrack Calc (TESTING ONLY!!!)
+              <Typography variant='h4' align='center' color='primary'>
+                GB FastTrack Calc
               </Typography>
             </Grid>
             <Grid item xs={12}>
