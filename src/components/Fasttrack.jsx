@@ -68,20 +68,9 @@ class Fasttrack extends Component {
     msg2: '',
     msg3: '',
     summessage: '',
-
-
-    curdeposit: 0,
-    levelcost: 0,
-    overtake: 0,
-    fpwin: 0,
     fielderror: false,
-    remain: 0,
     msgcolor: '#000000',
-    reward: 0,
-    bidcost: 0,
-    progressbar: 0
   }
-
 
 
   calculateResults = () => {
@@ -100,9 +89,10 @@ class Fasttrack extends Component {
       teamcont1 = Math.ceil(reward1st * bonus);
       owncont1 = Math.max(0, (totfpreq - (2 * teamcont1)));
       remain1st = totfpreq - (teamcont1 + owncont1);
-      let message = '1st place:  Guildmate=' + teamcont1 + ',  Myself=' + owncont1 + ',  Remaining FP=' + remain1st;
-      let summessage = 'With only 1st place open the total contribution by owner will be ' + owncont1 + ' FP. '
-      summessage += 'There would still be ' + remain1st + ' FP remaining which could be filled using normal swap threads.'
+      let effi = Math.ceil((owncont1 / totfpreq) * 100)
+      let message = '1st place:  Myself=' + owncont1 + ',   Guildmate=' + teamcont1 + ',    Remaining FP=' + remain1st;
+      let summessage = 'With only 1st place open the total contribution by owner will be ' + owncont1 + ' FP (' + effi + '% of total).'
+      summessage += ' There would still be ' + remain1st + ' FP remaining which could be filled using normal swap threads.'
       this.setState({ teamcont1: teamcont1, owncont1: owncont1, remain1st: remain1st, msg1: message, summessage: summessage });
     }
     if (reward2nd>0) {
@@ -110,9 +100,10 @@ class Fasttrack extends Component {
       owncont2 = Math.max(0, (remain1st - (2 * teamcont2)));
       remain2nd = remain1st - (teamcont2 + owncont2);
       let totcont = owncont1 + owncont2;
-      let message = '2nd place:  Guildmate=' + teamcont2 + ',  Myself=' + owncont2 + ',  Remaining FP=' + remain2nd;
-      let summessage = 'With 1st and 2nd places open the total contribution by owner will be ' + totcont + ' FP. '
-      summessage += 'There would still be ' + remain2nd + ' FP remaining which could be filled using normal swap threads.'
+      let effi = Math.ceil((totcont / totfpreq) * 100)
+      let message = '2nd place:  Myself=' + owncont2 + ',  Guildmate=' + teamcont2 + ',  Remaining FP=' + remain2nd;
+      let summessage = 'With 1st and 2nd places open the total contribution by owner will be ' + totcont + ' FP (' + effi + '% of total).'
+      summessage += ' There would still be ' + remain2nd + ' FP remaining which could be filled using normal swap threads.'
       this.setState({ teamcont2: teamcont2, owncont2: owncont2, remain2nd: remain2nd, msg2: message, summessage: summessage });
     }
     if (reward3rd>0) {
@@ -120,9 +111,10 @@ class Fasttrack extends Component {
       owncont3 = Math.max(0, (remain2nd - (2 * teamcont3)));
       remain3rd = remain2nd - (teamcont3 + owncont3);
       let totcont = owncont1 + owncont2 + owncont3;
-      let message = '3rd place:  Guildmate=' + teamcont3 + ',  Myself=' + owncont3 + ',  Remaining FP=' + remain3rd;
-      let summessage = 'With 1st, 2nd and 3rd places open the total contribution by owner will be ' + totcont + ' FP. '
-      summessage += 'There would still be ' + remain3rd + ' FP remaining which could be filled using normal swap threads.'
+      let effi = Math.ceil((totcont / totfpreq) * 100)
+      let message = '3rd place:  Myself=' + owncont3 + ',  Guildmate=' + teamcont3 + ',  Remaining FP=' + remain3rd;
+      let summessage = 'With 1st, 2nd and 3rd places open the total contribution by owner will be ' + totcont + ' FP (' + effi + '% of total).'
+      summessage += ' There would still be ' + remain3rd + ' FP remaining which could be filled using normal swap threads.'
       this.setState({ teamcont3: teamcont3, owncont3: owncont3, remain3rd: remain3rd, msg3: message, summessage: summessage });
     }
   }
@@ -161,11 +153,13 @@ class Fasttrack extends Component {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='subtitle1'>
+              <Typography variant='subtitle2'>
+               Owner must make their contribution BEFORE posting and contribution must be direct from their supplies/collections (not from swap threads)
+              </Typography>
+              <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with GB FastTrack process read explantion on the guild forum.
               </Typography>
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 value={this.state.totfpreq}
@@ -208,10 +202,6 @@ class Fasttrack extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-
-
-
-
 
             <Grid item xs={12}>
               <Table className={classes.table} size="small">
@@ -273,9 +263,6 @@ class Fasttrack extends Component {
               </Table>
             </Grid>
 
-
-
-
             <Grid item xs={12}>
               {(!isNaN(this.state.totfpreq) && this.state.totfpreq!==0 &&
                 !isNaN(this.state.reward1st) && this.state.reward1st!==0 && this.state.fielderror===false) &&
@@ -297,7 +284,6 @@ class Fasttrack extends Component {
                 </Fragment>
               }
             </Grid>
-
 
           </Grid> {/* container */}
           <Grid container spacing={0} direction='row' justify='flex-start'>
