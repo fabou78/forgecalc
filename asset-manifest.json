@@ -1,11 +1,11 @@
 {
-  "main.js": "/forgecalc/static/js/main.4a43e90e.chunk.js",
-  "main.js.map": "/forgecalc/static/js/main.4a43e90e.chunk.js.map",
-  "static/js/1.fa021adb.chunk.js": "/forgecalc/static/js/1.fa021adb.chunk.js",
-  "static/js/1.fa021adb.chunk.js.map": "/forgecalc/static/js/1.fa021adb.chunk.js.map",
+  "main.js": "/forgecalc/static/js/main.80f3705f.chunk.js",
+  "main.js.map": "/forgecalc/static/js/main.80f3705f.chunk.js.map",
+  "static/js/1.0b3955ad.chunk.js": "/forgecalc/static/js/1.0b3955ad.chunk.js",
+  "static/js/1.0b3955ad.chunk.js.map": "/forgecalc/static/js/1.0b3955ad.chunk.js.map",
   "runtime~main.js": "/forgecalc/static/js/runtime~main.5c0fd2a6.js",
   "runtime~main.js.map": "/forgecalc/static/js/runtime~main.5c0fd2a6.js.map",
   "index.html": "/forgecalc/index.html",
-  "precache-manifest.9aefe2cdcd5f936652af7b33d5dca37a.js": "/forgecalc/precache-manifest.9aefe2cdcd5f936652af7b33d5dca37a.js",
+  "precache-manifest.5166a06586bb11166740170d4589d08a.js": "/forgecalc/precache-manifest.5166a06586bb11166740170d4589d08a.js",
   "service-worker.js": "/forgecalc/service-worker.js"
 }
