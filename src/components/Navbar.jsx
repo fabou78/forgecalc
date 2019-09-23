@@ -45,14 +45,14 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.2</span>
+                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.2.1 Alpha</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
                   Hopefully useful... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Typography>
               </div>
-              <Button
+              {/* <Button
                 name="secure"
                 variant="contained"
                 color="secondary"
@@ -78,6 +78,15 @@ class Navbar extends Component {
                 onClick={handleClick}
               >
                 GB FastTrack
+              </Button> */}
+              <Button
+                name="fastng"
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={handleClick}
+              >
+                FastTrack v2
               </Button>
             </Toolbar>
           </Grid>

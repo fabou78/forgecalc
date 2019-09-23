@@ -8,6 +8,7 @@ import Profit from './components/Profit';
 import Navbar from './components/Navbar';
 import Blockplace from './components/Blockplace';
 import Fasttrack from './components/Fasttrack';
+import Fasttrackng from './components/Fasttrack_ng';
 
 
 const theme = createMuiTheme({
@@ -23,7 +24,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    loadpage: 'secure'
+    loadpage: 'fastng'
   }
 
   handleClick = (event) => {
@@ -36,6 +37,9 @@ class App extends Component {
     };
     if (name === 'fasttk') {
       this.setState({ loadpage: 'fasttk' });
+    };
+    if (name === 'fastng') {
+      this.setState({ loadpage: 'fastng' });
     };
   }
 
@@ -53,6 +57,9 @@ class App extends Component {
           }
           { (this.state.loadpage === 'fasttk') &&
             <Fasttrack />
+          }
+          { (this.state.loadpage === 'fastng') &&
+            <Fasttrackng />
           }
         </MuiThemeProvider>
       </Fragment>
