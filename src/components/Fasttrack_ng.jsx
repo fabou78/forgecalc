@@ -51,19 +51,37 @@ const styles = theme => ({
 class Fasttrack extends Component {
   state = {
     bonus: 1.8,
-    totfpreq: 0,
-    reward1st: 0,
-    reward2nd: 0,
-    reward3rd: 0,
-    teamcont1: 0,
-    teamcont2: 0,
-    teamcont3: 0,
-    owncont1: 0,
-    owncont2: 0,
-    owncont3: 0,
-    remain1st: 0,
-    remain2nd: 0,
-    remain3rd: 0,
+    totfpreq: 5074,
+    reward1st: 1310,
+    reward2nd: 655,
+    reward3rd: 220,
+    reward4th: 55,
+
+    paybyp1: 0,
+    paybyp2: 0,
+    paybyp3: 0,
+    paybyp4: 0,
+    rewardarc1: 0,
+    rewardarc2: 0,
+    rewardarc3: 0,
+    rewardarc4: 0,
+    lossp1: 0,
+    lossp2: 0,
+    lossp3: 0,
+    lossp4: 0,
+    payowner1: 0,
+    payowner2: 0,
+    payowner3: 0,
+    payowner4: 0,
+    gainp1: 0,
+    gainp2: 0,
+    gainp3: 0,
+    gainp4: 0,
+
+
+
+
+   
     msg1: '',
     msg2: '',
     msg3: '',
@@ -75,9 +93,11 @@ class Fasttrack extends Component {
 
   calculateResults = () => {
     let { bonus, totfpreq, reward1st, reward2nd, reward3rd, reward4th } = this.state;
-    var teamcont1, owncont1, remain1st;
-    var teamcont2, owncont2, remain2nd;
-    var teamcont3, owncont3, remain3rd;
+    var paybyp1, rewardarc1, lossp1, payowner1, gainp1;
+    var paybyp2, rewardarc2, lossp2, payowner2, gainp2;
+    var paybyp3, rewardarc3, lossp3, payowner3, gainp3;
+    var paybyp4, rewardarc4, lossp4, payowner4, gainp4;
+ 
     // Taking into account user blanking the field (backspace)
     if (isNaN(totfpreq)) totfpreq = 0;
     if (isNaN(reward1st)) reward1st = 0;
@@ -87,47 +107,44 @@ class Fasttrack extends Component {
     // Resetting all messages
     this.setState({ msg1: '', msg2:'', msg3:'', summessage: '' })
     if (reward1st>0) {
-      teamcont1 = Math.ceil(reward1st * bonus);
-      owncont1 = Math.max(0, (totfpreq - (2 * teamcont1)));
-      remain1st = totfpreq - (teamcont1 + owncont1);
-      let effi = Math.ceil((owncont1 / totfpreq) * 100)
-      let message = '1st place:  Myself=' + owncont1 + ',   Guildmate=' + teamcont1 + ',    Remaining FP=' + remain1st;
-      let summessage = 'With only 1st place open the total contribution by owner will be ' + owncont1 + ' FP (' + effi + '% of total).'
-      summessage += ' There would still be ' + remain1st + ' FP remaining which could be filled using normal swap threads.'
-      this.setState({ teamcont1: teamcont1, owncont1: owncont1, remain1st: remain1st, msg1: message, summessage: summessage });
+      rewardarc1 = Math.ceil(reward1st * bonus);
+      paybyp1 = Math.ceil(totfpreq / 2);
+      //Need to take into account when loss is a gain
+      lossp1 = paybyp1 - rewardarc1;
+      payowner1 = Math.ceil(1.3 * lossp1);
+      gainp1 = payowner1 - lossp1;
+      this.setState({ rewardarc1: rewardarc1, paybyp1: paybyp1, lossp1: lossp1, payowner1: payowner1, gainp1: gainp1 });
     }
+
+
     if (reward2nd>0) {
-      teamcont2 = Math.ceil(reward2nd * bonus);
-      owncont2 = Math.max(0, (remain1st - (2 * teamcont2)));
-      remain2nd = remain1st - (teamcont2 + owncont2);
-      let totcont = owncont1 + owncont2;
-      let effi = Math.ceil((totcont / totfpreq) * 100)
-      let message = '2nd place:  Myself=' + owncont2 + ',  Guildmate=' + teamcont2 + ',  Remaining FP=' + remain2nd;
-      let summessage = 'With 1st and 2nd places open the total contribution by owner will be ' + totcont + ' FP (' + effi + '% of total).'
-      summessage += ' There would still be ' + remain2nd + ' FP remaining which could be filled using normal swap threads.'
-      this.setState({ teamcont2: teamcont2, owncont2: owncont2, remain2nd: remain2nd, msg2: message, summessage: summessage });
+      rewardarc2 = Math.ceil(reward2nd * bonus);
+      paybyp2 = Math.ceil(paybyp1 / 2);
+      lossp2 = paybyp2 - rewardarc2;
+      payowner2 = Math.ceil(1.3 * lossp2);
+      gainp2 = payowner2 - lossp2;
+      this.setState({ rewardarc2: rewardarc2, paybyp2: paybyp2, lossp2: lossp2, payowner2: payowner2, gainp2: gainp2 });      
     }
+
+
     if (reward3rd>0) {
-      teamcont3 = Math.ceil(reward3rd * bonus);
-      owncont3 = Math.max(0, (remain2nd - (2 * teamcont3)));
-      remain3rd = remain2nd - (teamcont3 + owncont3);
-      let totcont = owncont1 + owncont2 + owncont3;
-      let effi = Math.ceil((totcont / totfpreq) * 100)
-      let message = '3rd place:  Myself=' + owncont3 + ',  Guildmate=' + teamcont3 + ',  Remaining FP=' + remain3rd;
-      let summessage = 'With 1st, 2nd and 3rd places open the total contribution by owner will be ' + totcont + ' FP (' + effi + '% of total).'
-      summessage += ' There would still be ' + remain3rd + ' FP remaining which could be filled using normal swap threads.'
-      this.setState({ teamcont3: teamcont3, owncont3: owncont3, remain3rd: remain3rd, msg3: message, summessage: summessage });
+      rewardarc3 = Math.ceil(reward3rd * bonus);
+      paybyp3 = Math.ceil(paybyp2 / 2);
+      lossp3 = paybyp3 - rewardarc3;
+      payowner3 = Math.ceil(1.1 * lossp3);
+      gainp3 = payowner3 - lossp3;
+      this.setState({ rewardarc3: rewardarc3, paybyp3: paybyp3, lossp3: lossp3, payowner3: payowner3, gainp3: gainp3 }); 
+      
     }
+
+
     if (reward4th>0) {
-      teamcont3 = Math.ceil(reward3rd * bonus);
-      owncont3 = Math.max(0, (remain2nd - (2 * teamcont3)));
-      remain3rd = remain2nd - (teamcont3 + owncont3);
-      let totcont = owncont1 + owncont2 + owncont3;
-      let effi = Math.ceil((totcont / totfpreq) * 100)
-      let message = '3rd place:  Myself=' + owncont3 + ',  Guildmate=' + teamcont3 + ',  Remaining FP=' + remain3rd;
-      let summessage = 'With 1st, 2nd and 3rd places open the total contribution by owner will be ' + totcont + ' FP (' + effi + '% of total).'
-      summessage += ' There would still be ' + remain3rd + ' FP remaining which could be filled using normal swap threads.'
-      this.setState({ teamcont3: teamcont3, owncont3: owncont3, remain3rd: remain3rd, msg3: message, summessage: summessage });
+      rewardarc4 = Math.ceil(reward4th * bonus);
+      paybyp4 = Math.ceil(paybyp3 / 2);
+      lossp4 = paybyp4 - rewardarc4;
+      payowner4 = Math.ceil(1.1 * lossp4);
+      gainp4 = payowner4 - lossp4;
+      this.setState({ rewardarc4: rewardarc4, paybyp4: paybyp4, lossp4: lossp4, payowner4: payowner4, gainp4: gainp4 }); 
     }
   }
 
@@ -144,6 +161,7 @@ class Fasttrack extends Component {
       [name]: intValue
     }, () => {
       if (this.state.reward1st >= this.state.totfpreq) {
+        console.log('Inside IF');
         this.setState({ fielderror: true });
       } else {
         this.setState({ fielderror: false });
@@ -161,12 +179,13 @@ class Fasttrack extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                GB FastTrack Calc (Testing only)
+                GB FastTrack V2 (Testing only)
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='subtitle2'>
-               Owner must make their contribution BEFORE posting and contribution must be direct from their supplies/collections (not from swap threads)
+                
+                <p fontStyle="italic">This is the second version of the FastTrack process </p>
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with GB FastTrack process read explantion on the guild forum.
@@ -216,7 +235,7 @@ class Fasttrack extends Component {
             </Grid>
             <Grid item xs={3}>
               <TextField
-                value={this.state.reward3rd}
+                value={this.state.reward4th}
                 name='reward4th'
                 label='4th place reward'
                 type='number'
