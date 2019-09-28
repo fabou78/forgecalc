@@ -1,6 +1,6 @@
 {
-  "//": "http://gbtesting1.8.s3-website.eu-west-2.amazonaws.com/",
-  "homepage": "https://fabou78.github.io/forgecalc/",
+  "homepage": "http://fasttrackv2.s3-website.eu-west-2.amazonaws.com",
+  "//": "https://fabou78.github.io/forgecalc/",
   "name": "forgecalc",
   "version": "0.1.0",
   "private": true,
