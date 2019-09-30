@@ -51,7 +51,7 @@ const styles = theme => ({
 class Fasttrack extends Component {
   state = {
     bonus: 1.8,
-    totfpreq: 5074,
+    totfpreq: 0,
     reward1st: 0,
     reward2nd: 0,
     reward3rd: 0,
@@ -103,11 +103,11 @@ class Fasttrack extends Component {
     if (reward1st>0) {
       rewardarc1 = Math.ceil(reward1st * bonus);
       paybyp1 = Math.ceil(totfpreq / 2);
-      //Need to take into account when loss is a gain
-      lossp1 = paybyp1 - rewardarc1;
-      payowner1 = Math.ceil(1.3 * lossp1);
-      gainp1 = payowner1 - lossp1;
-      // let remain1st = totfpreq - paybyp1
+      lossp1 = paybyp1 - rewardarc1; 
+      if (paybyp1 < rewardarc1) { lossp1 = 0}; // Taking into account Arc reward is greater than what p1 pays in
+      payowner1 = Math.ceil(1.3 * lossp1);  
+      gainp1 = payowner1 - lossp1;        
+      if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
       let message = '1st place:  Guildmate=' + paybyp1 + ' (gain=' + gainp1 + '),   I will pay you back=' + payowner1 + '.';
       let effi = Math.ceil((payowner1 / totfpreq) * 100);
       let tolevel = totfpreq - paybyp1
@@ -119,8 +119,10 @@ class Fasttrack extends Component {
       rewardarc2 = Math.ceil(reward2nd * bonus);
       paybyp2 = Math.ceil(paybyp1 / 2);
       lossp2 = paybyp2 - rewardarc2;
+      if (paybyp2 < rewardarc2) { lossp2 = 0};
       payowner2 = Math.ceil(1.3 * lossp2);
       gainp2 = payowner2 - lossp2;
+      if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
       let message = '2nd place:  Guildmate=' + paybyp2 + ' (gain=' + gainp2 + '),   I will pay you back=' + payowner2 + '.';
       let totpayowner = payowner1 + payowner2;
       let tolevel = totfpreq - (paybyp1 + paybyp2);
@@ -133,8 +135,10 @@ class Fasttrack extends Component {
       rewardarc3 = Math.ceil(reward3rd * bonus);
       paybyp3 = Math.ceil(paybyp2 / 2);
       lossp3 = paybyp3 - rewardarc3;
+      if (paybyp3 < rewardarc3) { lossp3 = 0};
       payowner3 = Math.ceil(1.1 * lossp3);
       gainp3 = payowner3 - lossp3;
+      if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
       let message = '3rd place:  Guildmate=' + paybyp3 + ' (gain=' + gainp3 + '),   I will pay you back=' + payowner3 + '.';
       let totpayowner = payowner1 + payowner2 + payowner3;
       let tolevel = totfpreq - ( paybyp1 + paybyp2 + paybyp3);
@@ -147,8 +151,10 @@ class Fasttrack extends Component {
       rewardarc4 = Math.ceil(reward4th * bonus);
       paybyp4 = Math.ceil(paybyp3 / 2);
       lossp4 = paybyp4 - rewardarc4;
+      if (paybyp4 < rewardarc4) { lossp4 = 0};
       payowner4 = Math.ceil(1.1 * lossp4);
       gainp4 = payowner4 - lossp4;
+      if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
       let message = '4th place:  Guildmate=' + paybyp4 + ' (gain=' + gainp4 + '),   I will pay you back=' + payowner4 + '.';
       let totpayowner = payowner1 + payowner2 + payowner3 + payowner4;
       let tolevel = totfpreq - (paybyp1 + paybyp2 + paybyp3 + paybyp4);
@@ -189,17 +195,16 @@ class Fasttrack extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                GB FastTrack V2 (Testing only)
+                GB FastTrack Version 2
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='subtitle2'>
-                
+              <Typography variant='subtitle2'>                
                 <p fontStyle="italic">This is the second version of the FastTrack process </p>
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with GB FastTrack process read explantion on the guild forum.
-              </Typography>
+              </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
               <TextField

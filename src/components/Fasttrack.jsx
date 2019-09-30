@@ -149,8 +149,8 @@ class Fasttrack extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                GB FastTrack Calc
-              </Typography>
+                GB FastTrack Version 1
+              </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
               <Typography variant='subtitle2'>
@@ -158,7 +158,7 @@ class Fasttrack extends Component {
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with GB FastTrack process read explantion on the guild forum.
-              </Typography>
+              </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
               <TextField

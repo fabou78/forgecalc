@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    loadpage: 'fastng'
+    loadpage: 'secure'
   }
 
   handleClick = (event) => {
