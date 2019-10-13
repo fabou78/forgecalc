@@ -1,6 +1,10 @@
 {
     "players": [
         {
+            "Name": "shambley",
+            "Arc": 32
+        },
+        {
             "Name": "S2E3S2",
             "Arc": 83
         },
@@ -17,8 +21,28 @@
             "Arc": 72
         },
         {
+            "Name": "helstea",
+            "Arc": 45
+        },
+        {
+            "Name": "kate0master",
+            "Arc": 35
+        },
+        {
+            "Name": "LEPI PRINC",
+            "Arc": 49
+        },
+        {
             "Name": "franger",
             "Arc": 63
+        },
+        {
+            "Name": "fletchapin",
+            "Arc": 8
+        },
+        {
+            "Name": "Robinhood26",
+            "Arc": 8
         },
         {
             "Name": "aegi",
@@ -31,6 +55,36 @@
         {
             "Name": "Fabou the Great",
             "Arc": 75
+        },
+        {
+            "Name": "aaaa12345",
+            "Arc": 13
+        },
+        {
+            "Name": "Jimbo 1970",
+            "Arc": 8
+        }
+    ],
+    "stats": [
+        {
+            "Name": "Total number of players: ",
+            "stat": 41
+        },
+        {
+            "Name": "Inactive players (last 48 hours): ",
+            "stat": 11
+        },
+        {
+            "Name": "Total number of Arc: ",
+            "stat": 16
+        },
+        {
+            "Name": "Total number of level 60+ Arc : ",
+            "stat": 8
+        },
+        {
+            "Name": "Total number of level 80+ Arc: ",
+            "stat": 2
         }
     ]
 }
