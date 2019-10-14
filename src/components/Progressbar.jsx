@@ -4,19 +4,19 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
-    track: {        
+    track: {
         width: '95%',
         height: 20,
-        background: '#222',
+        background: '#777',
         borderRadius: 10,
-        // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
+        boxShadow: '0 3px 5px 2px rgba(191, 191, 191, .3)'
     },
     filling: {
         width: props => props.percentage,
         height: '100%',
-        background: '#6bccf9',
-        borderRadius: 8,        
-    }   
+        background: '#1e88e5',
+        borderRadius: 8,
+    }
   });
 
 
