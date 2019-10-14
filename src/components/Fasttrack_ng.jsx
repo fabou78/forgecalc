@@ -48,7 +48,7 @@ const styles = theme => ({
 });
 
 
-class Fasttrack extends Component {
+class Fasttrackng extends Component {
   state = {
     bonus: 1.8,
     totfpreq: 0,
@@ -378,4 +378,4 @@ class Fasttrack extends Component {
   }
 }
 
-export default withStyles(styles)(Fasttrack);
+export default withStyles(styles)(Fasttrackng);
