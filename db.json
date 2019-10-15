@@ -1,10 +1,6 @@
 {
     "players": [
         {
-            "Name": "shambley",
-            "Arc": 32
-        },
-        {
             "Name": "S2E3S2",
             "Arc": 83
         },
@@ -46,7 +42,7 @@
         },
         {
             "Name": "aegi",
-            "Arc": 73
+            "Arc": 74
         },
         {
             "Name": "Ante Mortem",
@@ -58,7 +54,7 @@
         },
         {
             "Name": "aaaa12345",
-            "Arc": 14
+            "Arc": 15
         },
         {
             "Name": "Jimbo 1970",
@@ -68,15 +64,15 @@
     "stats": [
         {
             "Name": "Total number of players: ",
-            "stat": 41
+            "stat": 42
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 11
+            "stat": 12
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 16
+            "stat": 15
         },
         {
             "Name": "Total number of level 60+ Arc : ",
