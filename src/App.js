@@ -25,7 +25,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    loadpage: 'arcstats'
+    loadpage: 'secure'
   }
 
   handleClick = (event) => {
