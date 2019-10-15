@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Blockplace from './components/Blockplace';
 import Fasttrack from './components/Fasttrack';
 import Fasttrackng from './components/Fasttrack_ng';
+import Arcstasts from './components/Arcstats';
 
 
 const theme = createMuiTheme({
@@ -41,6 +42,9 @@ class App extends Component {
     if (name === 'fastng') {
       this.setState({ loadpage: 'fastng' });
     };
+    if (name === 'arcstats') {
+      this.setState({ loadpage: 'arcstats' });
+    };
   }
 
   render() {
@@ -60,6 +64,9 @@ class App extends Component {
           }
           { (this.state.loadpage === 'fastng') &&
             <Fasttrackng />
+          }
+          { (this.state.loadpage === 'arcstats') &&
+            <Arcstasts />
           }
         </MuiThemeProvider>
       </Fragment>

@@ -45,7 +45,7 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.3</span>
+                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.3.1</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
@@ -87,6 +87,15 @@ class Navbar extends Component {
                 onClick={handleClick}
               >
                 FastTrack v2
+              </Button>
+              <Button
+                name="arcstats"
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={handleClick}
+              >
+                Guild Arc Stats
               </Button>
             </Toolbar>
           </Grid>

@@ -15,7 +15,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
-      width: 600,
+      width: 650,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -48,7 +48,7 @@ const styles = theme => ({
 });
 
 
-class Fasttrack extends Component {
+class Fasttrackng extends Component {
   state = {
     bonus: 1.8,
     totfpreq: 0,
@@ -75,7 +75,7 @@ class Fasttrack extends Component {
     gainp1: 0,
     gainp2: 0,
     gainp3: 0,
-    gainp4: 0,   
+    gainp4: 0,
     msg1: '',
     msg2: '',
     msg3: '',
@@ -103,15 +103,15 @@ class Fasttrack extends Component {
     if (reward1st>0) {
       rewardarc1 = Math.ceil(reward1st * bonus);
       paybyp1 = Math.ceil(totfpreq / 2);
-      lossp1 = paybyp1 - rewardarc1; 
+      lossp1 = paybyp1 - rewardarc1;
       if (paybyp1 < rewardarc1) { lossp1 = 0}; // Taking into account Arc reward is greater than what p1 pays in
-      payowner1 = Math.ceil(1.3 * lossp1);  
-      gainp1 = payowner1 - lossp1;        
+      payowner1 = Math.ceil(1.3 * lossp1);
+      gainp1 = payowner1 - lossp1;
       if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
-      let message = '1st place:  Guildmate=' + paybyp1 + ' (gain=' + gainp1 + '),   I will pay you back=' + payowner1 + '.';
+      let message = '1st:  Guildmate=' + paybyp1 + ' (Arc≈' + rewardarc1 + ', Tot profit≈' + gainp1 + '),   I\'ll pay you back=' + payowner1 + '.';
       let effi = Math.ceil((payowner1 / totfpreq) * 100);
       let tolevel = totfpreq - paybyp1
-      let summessage = 'With only 1st place open the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
       this.setState({ rewardarc1: rewardarc1, paybyp1: paybyp1, lossp1: lossp1, payowner1: payowner1, gainp1: gainp1, msg1: message, summessage: summessage });
     }
 
@@ -123,12 +123,12 @@ class Fasttrack extends Component {
       payowner2 = Math.ceil(1.3 * lossp2);
       gainp2 = payowner2 - lossp2;
       if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
-      let message = '2nd place:  Guildmate=' + paybyp2 + ' (gain=' + gainp2 + '),   I will pay you back=' + payowner2 + '.';
+      let message = '2nd:  Guildmate=' + paybyp2 + ' (Arc≈' + rewardarc2 + ', Tot profit≈' + gainp2 + '),   I\'ll pay you back=' + payowner2 + '.';
       let totpayowner = payowner1 + payowner2;
       let tolevel = totfpreq - (paybyp1 + paybyp2);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st and 2nd place open the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
-      this.setState({ rewardarc2: rewardarc2, paybyp2: paybyp2, lossp2: lossp2, payowner2: payowner2, gainp2: gainp2, msg2: message, summessage: summessage  });      
+      let summessage = 'With 1st and 2nd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      this.setState({ rewardarc2: rewardarc2, paybyp2: paybyp2, lossp2: lossp2, payowner2: payowner2, gainp2: gainp2, msg2: message, summessage: summessage  });
     }
 
     if (reward3rd>0) {
@@ -139,12 +139,12 @@ class Fasttrack extends Component {
       payowner3 = Math.ceil(1.1 * lossp3);
       gainp3 = payowner3 - lossp3;
       if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
-      let message = '3rd place:  Guildmate=' + paybyp3 + ' (gain=' + gainp3 + '),   I will pay you back=' + payowner3 + '.';
+      let message = '3rd:  Guildmate=' + paybyp3 + ' (Arc≈' + rewardarc3 + ', Tot profit≈' + gainp3 + '),   I\'ll pay you back=' + payowner3 + '.';
       let totpayowner = payowner1 + payowner2 + payowner3;
       let tolevel = totfpreq - ( paybyp1 + paybyp2 + paybyp3);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st, 2nd and 3rd place open the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
-      this.setState({ rewardarc3: rewardarc3, paybyp3: paybyp3, lossp3: lossp3, payowner3: payowner3, gainp3: gainp3, msg3: message, summessage: summessage }); 
+      let summessage = 'With 1st, 2nd and 3rd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      this.setState({ rewardarc3: rewardarc3, paybyp3: paybyp3, lossp3: lossp3, payowner3: payowner3, gainp3: gainp3, msg3: message, summessage: summessage });
     }
 
     if (reward4th>0) {
@@ -155,12 +155,12 @@ class Fasttrack extends Component {
       payowner4 = Math.ceil(1.1 * lossp4);
       gainp4 = payowner4 - lossp4;
       if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
-      let message = '4th place:  Guildmate=' + paybyp4 + ' (gain=' + gainp4 + '),   I will pay you back=' + payowner4 + '.';
+      let message = '4th:  Guildmate=' + paybyp4 + ' (Arc≈' + rewardarc4 + ',Tot profit≈' + gainp4 + '),   I\'ll pay you back=' + payowner4 + '.';
       let totpayowner = payowner1 + payowner2 + payowner3 + payowner4;
       let tolevel = totfpreq - (paybyp1 + paybyp2 + paybyp3 + paybyp4);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st, 2nd, 3rd and 4th place open the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
-      this.setState({ rewardarc4: rewardarc4, paybyp4: paybyp4, lossp4: lossp4, payowner4: payowner4, gainp4: gainp4, msg4: message, summessage: summessage }); 
+      let summessage = 'With 1st, 2nd, 3rd and 4th place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      this.setState({ rewardarc4: rewardarc4, paybyp4: paybyp4, lossp4: lossp4, payowner4: payowner4, gainp4: gainp4, msg4: message, summessage: summessage });
     }
   }
 
@@ -199,7 +199,7 @@ class Fasttrack extends Component {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant='subtitle2'>                
+              <Typography variant='subtitle2'>
                 <p fontStyle="italic">This is the second version of the FastTrack process </p>
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
@@ -345,7 +345,7 @@ class Fasttrack extends Component {
                   </Typography>
                   <Typography>{this.state.summessage}</Typography>
                   <Typography className={classes.result}>
-                    <strong>Copy and paste the following into the guild 1.8 thread after posting your GB</strong>
+                    <strong>Copy and paste the following into one of the guild "Fast track" thread after posting your GB</strong>
                   </Typography>
                   <Typography className={classes.info2}>
                     I am opening the following places on my GB posted above:
@@ -354,8 +354,9 @@ class Fasttrack extends Component {
                     {(this.state.msg2!=='') && <Typography>&nbsp;&nbsp;{this.state.msg2}<br></br></Typography>}
                     {(this.state.msg3!=='') && <Typography>&nbsp;&nbsp;{this.state.msg3}<br></br></Typography>}
                     {(this.state.msg4!=='') && <Typography>&nbsp;&nbsp;{this.state.msg4}<br></br></Typography>}
-                    <br></br>
-                    Please state which place you take and on which GB you want me to pay you back.
+                    <p><strong>NOTE:</strong> If your Arc level is greater than 60, "Tot profit" figures shown above might be slightly higher.</p>
+                    <p>Please state which place you take and on which GB you want me to pay you back.</p>
+
                   </Typography>
                 </Fragment>
               }
@@ -378,4 +379,4 @@ class Fasttrack extends Component {
   }
 }
 
-export default withStyles(styles)(Fasttrack);
+export default withStyles(styles)(Fasttrackng);
