@@ -354,9 +354,9 @@ class Fasttrackng extends Component {
                     {(this.state.msg2!=='') && <Typography>&nbsp;&nbsp;{this.state.msg2}<br></br></Typography>}
                     {(this.state.msg3!=='') && <Typography>&nbsp;&nbsp;{this.state.msg3}<br></br></Typography>}
                     {(this.state.msg4!=='') && <Typography>&nbsp;&nbsp;{this.state.msg4}<br></br></Typography>}
-                    <br></br>
-                    Please state which place you take and on which GB you want me to pay you back.
-                    <p>NOTE: If your Arc level is greater than 60, "Tot profit" figures shown above might be slightly higher.</p>
+                    <p><strong>NOTE:</strong> If your Arc level is greater than 60, "Tot profit" figures shown above might be slightly higher.</p>
+                    <p>Please state which place you take and on which GB you want me to pay you back.</p>
+
                   </Typography>
                 </Fragment>
               }
