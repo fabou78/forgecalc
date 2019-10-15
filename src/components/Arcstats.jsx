@@ -33,7 +33,7 @@ const styles = theme => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2 * 2))]: {
-      width: 600,
+      width: 650,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -74,7 +74,6 @@ export class ArcGraph extends Component {
   };
   render () {
     const arc_data = this.props.arc_data;
-    console.log(arc_data);
     return (
       <div className="pie-charts">
         <div className="pie-chart-wrapper">
@@ -115,6 +114,9 @@ class Arcstasts extends Component {
     isLoaded: false,
     players: [],
     stats: [],
+    players_arc: [],
+    players_arc60: [],
+    players_arc80: [],
     arc_data: [],
     pcnt_player_tot: '',
     pcnt_player_inac: '',
@@ -128,8 +130,19 @@ class Arcstasts extends Component {
       .then(
         (result) => {
           // console.log(result);
+          var my_arc_list = [];
+          var my_arc_list60 =[];
+          var my_arc_list80 = [];
+          result.forEach(element => {
+            if (element.Arc < 60) my_arc_list.push(element.Name);
+            if (59 < element.Arc && element.Arc < 80) my_arc_list60.push(element.Name);
+            if (element.Arc > 79) my_arc_list80.push(element.Name);
+          });
           this.setState({
             isLoaded: true,
+            players_arc: my_arc_list,
+            players_arc60: my_arc_list60,
+            players_arc80: my_arc_list80,
             players: result
           })
         });
@@ -169,7 +182,7 @@ class Arcstasts extends Component {
 
   render() {
     const { classes } = this.props;
-    const { pcnt_player_tot, pcnt_player_ac, pcnt_arc, nb_arc, nb_player_ac, nb_player_tot } = this.state;
+    const { pcnt_player_tot, pcnt_player_ac, pcnt_arc, nb_arc, nb_player_ac, nb_player_tot, players_arc, players_arc60, players_arc80 } = this.state;
     return (
       <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
@@ -201,8 +214,36 @@ class Arcstasts extends Component {
             </Grid>
 
             <Grid item xs={12}>
+            <Typography variant='h6' color='primary'>
+              <br></br>
+              Arc distribution
+              </Typography>
               <ArcGraph arc_data={this.state.arc_data} />
             </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant='h6' color='primary'>
+                <br></br>
+                Players with Arc @ 80+
+              </Typography>
+              <ul>{players_arc80.map(arc => <li>{arc}</li>)}</ul>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant='h6' color='primary'>
+                Players with Arc @ 60+ (and lower then 80)
+              </Typography>
+              <ul>{players_arc60.map(arc => <li>{arc}</li>)}</ul>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography variant='h6' color='primary'>
+                Players with Arc lower than 60
+              </Typography>
+              <ul>{players_arc.map(arc => <li>{arc}</li>)}</ul>
+            </Grid>
+
+
 
           </Grid> {/* container */}
 
