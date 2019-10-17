@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/fabou78/forgecalc)](LICENSE)
+[![License](https://img.shields.io/github/license/fabou78/forgecalc)](https://github.com/fabou78/forgecalc/blob/master/LICENSE)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
