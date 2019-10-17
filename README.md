@@ -5,9 +5,7 @@
 ## Description
 
 This is a simple Web App with a few tools to simulate Forge Point (FP) investment on a Great Building (GB) both from the owner and investor perspective and with some additional tools specific to the guild I am with at the moment ``Intrepid Ones``.
-
 &nbsp;
-
 The app is accessible at the following link [fabou's forgecalc](https://fabou78.github.io/forgecalc/) and a short description of the tools available is listed bellow;
 * ``SECURE PLACE`` - This tool will simulate your potential investment on a GB by letting you know how much you should invest to secure a particular place into someone else GB. It will also let you know if you would be loosing or gaining some FPs.
 * ``PROFIT CALC`` - This tool will let you know when a partical slot (place) in your own GB is profitable or not based on a potential investor with an Arc at least @ level 80. Right now the app is not yet able to tell you how much you should put on your own GB to make a particular slot profitable for an potential investor (it might be in the future).
