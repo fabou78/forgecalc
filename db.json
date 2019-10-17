@@ -13,12 +13,16 @@
             "Arc": 80
         },
         {
+            "Name": "davekoz",
+            "Arc": 45
+        },
+        {
             "Name": "Jivonnar",
             "Arc": 72
         },
         {
             "Name": "helstea",
-            "Arc": 45
+            "Arc": 46
         },
         {
             "Name": "kate0master",
@@ -46,15 +50,15 @@
         },
         {
             "Name": "Ante Mortem",
-            "Arc": 72
+            "Arc": 73
         },
         {
             "Name": "Fabou the Great",
-            "Arc": 75
+            "Arc": 76
         },
         {
             "Name": "aaaa12345",
-            "Arc": 15
+            "Arc": 16
         },
         {
             "Name": "Jimbo 1970",
@@ -72,7 +76,7 @@
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 15
+            "stat": 16
         },
         {
             "Name": "Total number of level 60+ Arc : ",
