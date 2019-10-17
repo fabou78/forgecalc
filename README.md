@@ -74,8 +74,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
+* **Fabou** - *Initial work* - [Fabou78](https://github.com/fabou78)
 
 
 ## License
