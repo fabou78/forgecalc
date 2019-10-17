@@ -1,4 +1,4 @@
-# ForgeCalc &nbsp; &nbsp; [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) &nbsp; [![release](https://img.shields.io/github/v/release/fabou78/forgecalc?style=flat-square)](https://github.com/fabou78/forgecalc/releases)
+# ForgeCalc &nbsp; &nbsp; [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)  [![release](https://img.shields.io/github/v/release/fabou78/forgecalc?style=flat-square)](https://github.com/fabou78/forgecalc/releases)
 
 > Yet **another** tool for the "Forge of Empires" game by InnoGames  
 
