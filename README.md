@@ -5,14 +5,17 @@
 ## Description
 
 This is a simple Web App with a few tools to simulate Forge Point (FP) investment on a Great Building (GB) both from the owner and investor perspective and with some additional tools specific to the guild I am with at the moment ``Intrepid Ones``.
+
+&nbsp;
+
 The app is accessible at the following link [fabou's forgecalc](https://fabou78.github.io/forgecalc/) and a short description of the tools available is listed bellow;
 * ``SECURE PLACE`` - This tool will simulate your potential investment on a GB by letting you know how much you should invest to secure a particular place into someone else GB. It will also let you know if you would be loosing or gaining some FPs.
 * ``PROFIT CALC`` - This tool will let you know when a partical slot (place) in your own GB is profitable or not based on a potential investor with an Arc at least @ level 80. Right now the app is not yet able to tell you how much you should put on your own GB to make a particular slot profitable for an potential investor (it might be in the future).
-* ``FASTTRACK V1`` - The aim of this tools is to speed up leveling of GB, it will give the owner a view of how much FP is required to allow other players in the guild to help out.  Investors will make profit base on their Arc level and an Arc @ level 60 minimum is required to make profit. It is important to note that in this version it is the responsiblity of the **owner to secure the place** before an investor can invest and that the particular place will be open for someone outside the guild until the investor put the required FPs.
-* ``FASTTRACK V2`` - Same as above except that this time, it is the investor that secure his place and the ower now pays back the investor loss (if any) + some extra into a GB of the investor's choice
-* ``GUILD ARC STATS`` - This tool give a quick view of the Arc situation in the guild I am in
+* ``FASTTRACK V1`` - The aim of this tools is to speed up leveling of GB, it will give the owner a view of how much FP is required to allow other players in the guild to help out.  Investors will make profit based on their Arc level and an Arc @ level 60 and plus is required to make any profits. It is important to note that in this version it is the responsiblity of the **owner to secure the place** before an investor can invest and that the particular place will be open for someone outside the guild until the investor put the required FPs. To avoid sniping **investor should not** put any FP until the owner has added the required FPs.
+* ``FASTTRACK V2`` - Same as above except that this time, it is the investor that secure his place hence sniping is not possible. The ower now pays back the investor any loss (if any) plus some extra FPs into a GB of the investor's choice.
+* ``GUILD ARC STATS`` - This tool give a quick view of the Arc situation in the guild I am in at the moment.
 
-> Both of the Fasttrack tools are made to help out younger player (and more) to speed up GB leveling. It requires generosity from guildmates as well as owner having some (possibly consequent) FP in their inventory.
+> Both of the Fasttrack tools are made to help out young (and older) players to speed up GB leveling. It requires generosity from guildmates as well as the owner having some (possibly fair) amount of FP available in their inventory.
 
 &nbsp;
 
