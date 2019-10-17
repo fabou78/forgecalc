@@ -1,4 +1,4 @@
-https://img.shields.io/github/license/fabou78/forgecalc
+![License](https://img.shields.io/github/license/fabou78/forgecalc)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
