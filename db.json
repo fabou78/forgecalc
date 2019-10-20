@@ -18,7 +18,7 @@
         },
         {
             "Name": "Jivonnar",
-            "Arc": 72
+            "Arc": 73
         },
         {
             "Name": "helstea",
@@ -27,10 +27,6 @@
         {
             "Name": "kate0master",
             "Arc": 35
-        },
-        {
-            "Name": "LEPI PRINC",
-            "Arc": 49
         },
         {
             "Name": "franger",
@@ -46,7 +42,7 @@
         },
         {
             "Name": "aegi",
-            "Arc": 74
+            "Arc": 76
         },
         {
             "Name": "Ante Mortem",
@@ -58,7 +54,7 @@
         },
         {
             "Name": "aaaa12345",
-            "Arc": 16
+            "Arc": 19
         },
         {
             "Name": "Jimbo 1970",
@@ -68,15 +64,15 @@
     "stats": [
         {
             "Name": "Total number of players: ",
-            "stat": 42
+            "stat": 36
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 12
+            "stat": 10
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 16
+            "stat": 15
         },
         {
             "Name": "Total number of level 60+ Arc : ",
