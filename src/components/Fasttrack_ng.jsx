@@ -108,7 +108,7 @@ class Fasttrackng extends Component {
       payowner1 = Math.ceil(1.3 * lossp1);
       gainp1 = payowner1 - lossp1;
       if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
-      let message = '1st:  Guildmate=' + paybyp1 + ' (Arc≈' + rewardarc1 + ', Tot profit≈' + gainp1 + '),   I\'ll pay you back=' + payowner1 + '.';
+      let message = '1st:  player=' + paybyp1 + ' (Arc≈' + rewardarc1 + ', Tot profit≈' + gainp1 + '),   I\'ll pay you back=' + payowner1 ;
       let effi = Math.ceil((payowner1 / totfpreq) * 100);
       let tolevel = totfpreq - paybyp1
       let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
@@ -123,7 +123,7 @@ class Fasttrackng extends Component {
       payowner2 = Math.ceil(1.3 * lossp2);
       gainp2 = payowner2 - lossp2;
       if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
-      let message = '2nd:  Guildmate=' + paybyp2 + ' (Arc≈' + rewardarc2 + ', Tot profit≈' + gainp2 + '),   I\'ll pay you back=' + payowner2 + '.';
+      let message = '2nd:  player=' + paybyp2 + ' (Arc≈' + rewardarc2 + ', Tot profit≈' + gainp2 + '),   I\'ll pay you back=' + payowner2 ;
       let totpayowner = payowner1 + payowner2;
       let tolevel = totfpreq - (paybyp1 + paybyp2);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
@@ -136,10 +136,10 @@ class Fasttrackng extends Component {
       paybyp3 = Math.ceil(paybyp2 / 2);
       lossp3 = paybyp3 - rewardarc3;
       if (paybyp3 < rewardarc3) { lossp3 = 0};
-      payowner3 = Math.ceil(1.1 * lossp3);
+      payowner3 = Math.ceil(1.4 * lossp3);
       gainp3 = payowner3 - lossp3;
       if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
-      let message = '3rd:  Guildmate=' + paybyp3 + ' (Arc≈' + rewardarc3 + ', Tot profit≈' + gainp3 + '),   I\'ll pay you back=' + payowner3 + '.';
+      let message = '3rd:  player=' + paybyp3 + ' (Arc≈' + rewardarc3 + ', Tot profit≈' + gainp3 + '),   I\'ll pay you back=' + payowner3 ;
       let totpayowner = payowner1 + payowner2 + payowner3;
       let tolevel = totfpreq - ( paybyp1 + paybyp2 + paybyp3);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
@@ -152,10 +152,10 @@ class Fasttrackng extends Component {
       paybyp4 = Math.ceil(paybyp3 / 2);
       lossp4 = paybyp4 - rewardarc4;
       if (paybyp4 < rewardarc4) { lossp4 = 0};
-      payowner4 = Math.ceil(1.1 * lossp4);
+      payowner4 = Math.ceil(1.4 * lossp4);
       gainp4 = payowner4 - lossp4;
       if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
-      let message = '4th:  Guildmate=' + paybyp4 + ' (Arc≈' + rewardarc4 + ',Tot profit≈' + gainp4 + '),   I\'ll pay you back=' + payowner4 + '.';
+      let message = '4th:  player=' + paybyp4 + ' (Arc≈' + rewardarc4 + ',Tot profit≈' + gainp4 + '),   I\'ll pay you back=' + payowner4 ;
       let totpayowner = payowner1 + payowner2 + payowner3 + payowner4;
       let tolevel = totfpreq - (paybyp1 + paybyp2 + paybyp3 + paybyp4);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
