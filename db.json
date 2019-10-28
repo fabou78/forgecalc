@@ -5,8 +5,12 @@
             "Arc": 83
         },
         {
+            "Name": "shambley",
+            "Arc": 33
+        },
+        {
             "Name": "King Jason the Greater",
-            "Arc": 64
+            "Arc": 65
         },
         {
             "Name": "groana",
@@ -18,43 +22,43 @@
         },
         {
             "Name": "Jivonnar",
-            "Arc": 73
+            "Arc": 74
         },
         {
             "Name": "helstea",
-            "Arc": 46
+            "Arc": 48
         },
         {
             "Name": "kate0master",
             "Arc": 35
         },
         {
-            "Name": "franger",
-            "Arc": 65
-        },
-        {
             "Name": "fletchapin",
             "Arc": 8
         },
         {
+            "Name": "franger",
+            "Arc": 67
+        },
+        {
             "Name": "Robinhood26",
-            "Arc": 8
+            "Arc": 9
         },
         {
             "Name": "aegi",
-            "Arc": 76
+            "Arc": 77
         },
         {
             "Name": "Ante Mortem",
-            "Arc": 73
+            "Arc": 75
         },
         {
             "Name": "Fabou the Great",
-            "Arc": 76
+            "Arc": 78
         },
         {
-            "Name": "aaaa12345",
-            "Arc": 19
+            "Name": "Pat167",
+            "Arc": 42
         },
         {
             "Name": "Jimbo 1970",
@@ -64,15 +68,15 @@
     "stats": [
         {
             "Name": "Total number of players: ",
-            "stat": 36
+            "stat": 39
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 10
+            "stat": 8
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 15
+            "stat": 16
         },
         {
             "Name": "Total number of level 60+ Arc : ",
