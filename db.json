@@ -10,7 +10,7 @@
         },
         {
             "Name": "King Jason the Greater",
-            "Arc": 65
+            "Arc": 66
         },
         {
             "Name": "groana",
@@ -31,6 +31,10 @@
         {
             "Name": "kate0master",
             "Arc": 35
+        },
+        {
+            "Name": "LEPI PRINC",
+            "Arc": 50
         },
         {
             "Name": "fletchapin",
@@ -54,7 +58,11 @@
         },
         {
             "Name": "Fabou the Great",
-            "Arc": 78
+            "Arc": 79
+        },
+        {
+            "Name": "aaaa12345",
+            "Arc": 26
         },
         {
             "Name": "Pat167",
@@ -68,15 +76,15 @@
     "stats": [
         {
             "Name": "Total number of players: ",
-            "stat": 39
+            "stat": 40
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 8
+            "stat": 4
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 16
+            "stat": 18
         },
         {
             "Name": "Total number of level 60+ Arc : ",
