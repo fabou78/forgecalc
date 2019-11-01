@@ -34,7 +34,7 @@
         },
         {
             "Name": "LEPI PRINC",
-            "Arc": 50
+            "Arc": 51
         },
         {
             "Name": "fletchapin",
@@ -50,23 +50,23 @@
         },
         {
             "Name": "aegi",
-            "Arc": 77
+            "Arc": 78
         },
         {
             "Name": "Ante Mortem",
-            "Arc": 75
+            "Arc": 76
+        },
+        {
+            "Name": "aaaa12345",
+            "Arc": 28
         },
         {
             "Name": "Fabou the Great",
             "Arc": 79
         },
         {
-            "Name": "aaaa12345",
-            "Arc": 26
-        },
-        {
             "Name": "Pat167",
-            "Arc": 42
+            "Arc": 43
         },
         {
             "Name": "Jimbo 1970",
@@ -80,7 +80,7 @@
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 4
+            "stat": 6
         },
         {
             "Name": "Total number of Arc: ",
