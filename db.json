@@ -5,68 +5,60 @@
             "Arc": 83
         },
         {
-            "Name": "shambley",
-            "Arc": 33
+            "Name": "King Jason the Greater",
+            "Arc": 71
         },
         {
-            "Name": "King Jason the Greater",
-            "Arc": 66
+            "Name": "shambley",
+            "Arc": 34
         },
         {
             "Name": "groana",
             "Arc": 80
         },
         {
+            "Name": "Jivonnar",
+            "Arc": 75
+        },
+        {
             "Name": "davekoz",
             "Arc": 45
         },
         {
-            "Name": "Jivonnar",
-            "Arc": 74
-        },
-        {
             "Name": "helstea",
-            "Arc": 48
+            "Arc": 50
         },
         {
             "Name": "kate0master",
             "Arc": 35
         },
         {
-            "Name": "LEPI PRINC",
-            "Arc": 51
-        },
-        {
             "Name": "fletchapin",
-            "Arc": 8
-        },
-        {
-            "Name": "franger",
-            "Arc": 67
-        },
-        {
-            "Name": "Robinhood26",
             "Arc": 9
         },
         {
+            "Name": "franger",
+            "Arc": 69
+        },
+        {
+            "Name": "Robinhood26",
+            "Arc": 10
+        },
+        {
             "Name": "aegi",
-            "Arc": 78
-        },
-        {
-            "Name": "Ante Mortem",
-            "Arc": 76
-        },
-        {
-            "Name": "aaaa12345",
-            "Arc": 28
-        },
-        {
-            "Name": "Fabou the Great",
             "Arc": 79
         },
         {
+            "Name": "aaaa12345",
+            "Arc": 39
+        },
+        {
+            "Name": "Fabou the Great",
+            "Arc": 80
+        },
+        {
             "Name": "Pat167",
-            "Arc": 43
+            "Arc": 47
         },
         {
             "Name": "Jimbo 1970",
@@ -76,23 +68,23 @@
     "stats": [
         {
             "Name": "Total number of players: ",
-            "stat": 40
+            "stat": 38
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 6
+            "stat": 7
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 18
+            "stat": 16
         },
         {
             "Name": "Total number of level 60+ Arc : ",
-            "stat": 6
+            "stat": 4
         },
         {
             "Name": "Total number of level 80+ Arc: ",
-            "stat": 2
+            "stat": 3
         }
     ]
 }
