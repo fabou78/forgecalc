@@ -74,7 +74,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Fabou** - *Initial work* - [Fabou78](https://github.com/fabou78) | Itnternational East-Nagach (EN5)
+* **Fabou** - *Initial work* - [Fabou78](https://github.com/fabou78) | International East-Nagach (EN5)
 
 
 ## License
