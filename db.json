@@ -6,7 +6,7 @@
         },
         {
             "Name": "King Jason the Greater",
-            "Arc": 72
+            "Arc": 74
         },
         {
             "Name": "shambley",
@@ -18,7 +18,7 @@
         },
         {
             "Name": "Jivonnar",
-            "Arc": 75
+            "Arc": 76
         },
         {
             "Name": "davekoz",
@@ -26,19 +26,19 @@
         },
         {
             "Name": "helstea",
-            "Arc": 51
+            "Arc": 54
         },
         {
             "Name": "kate0master",
             "Arc": 35
         },
         {
-            "Name": "fletchapin",
-            "Arc": 9
+            "Name": "franger",
+            "Arc": 71
         },
         {
-            "Name": "franger",
-            "Arc": 70
+            "Name": "fletchapin",
+            "Arc": 9
         },
         {
             "Name": "Robinhood26",
@@ -46,11 +46,11 @@
         },
         {
             "Name": "aegi",
-            "Arc": 80
+            "Arc": 81
         },
         {
             "Name": "aaaa12345",
-            "Arc": 39
+            "Arc": 42
         },
         {
             "Name": "Fabou the Great",
@@ -58,11 +58,15 @@
         },
         {
             "Name": "Pat167",
-            "Arc": 48
+            "Arc": 61
         },
         {
             "Name": "Jimbo 1970",
             "Arc": 8
+        },
+        {
+            "Name": "Cyril the Chivalrous 496",
+            "Arc": 6
         }
     ],
     "stats": [
@@ -72,15 +76,15 @@
         },
         {
             "Name": "Inactive players (last 48 hours): ",
-            "stat": 6
+            "stat": 2
         },
         {
             "Name": "Total number of Arc: ",
-            "stat": 16
+            "stat": 17
         },
         {
             "Name": "Total number of level 60+ Arc : ",
-            "stat": 3
+            "stat": 4
         },
         {
             "Name": "Total number of level 80+ Arc: ",
