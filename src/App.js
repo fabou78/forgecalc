@@ -7,7 +7,6 @@ import { blue, pink } from '@material-ui/core/colors'
 import Profit from './components/Profit';
 import Navbar from './components/Navbar';
 import Blockplace from './components/Blockplace';
-import Fasttrack from './components/Fasttrack';
 import Fasttrackng from './components/Fasttrack_ng';
 import Arcstasts from './components/Arcstats';
 
@@ -36,9 +35,6 @@ class App extends Component {
     if (name === 'profit') {
       this.setState({ loadpage: 'profit' });
     };
-    if (name === 'fasttk') {
-      this.setState({ loadpage: 'fasttk' });
-    };
     if (name === 'fastng') {
       this.setState({ loadpage: 'fastng' });
     };
@@ -58,9 +54,6 @@ class App extends Component {
           }
           { (this.state.loadpage === 'profit') &&
             <Profit />
-          }
-          { (this.state.loadpage === 'fasttk') &&
-            <Fasttrack />
           }
           { (this.state.loadpage === 'fastng') &&
             <Fasttrackng />

@@ -105,13 +105,19 @@ class Fasttrackng extends Component {
       paybyp1 = Math.ceil(totfpreq / 2);
       lossp1 = paybyp1 - rewardarc1;
       if (paybyp1 < rewardarc1) { lossp1 = 0}; // Taking into account Arc reward is greater than what p1 pays in
-      payowner1 = Math.ceil(1.3 * lossp1);
-      gainp1 = payowner1 - lossp1;
-      if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
+
+      gainp1 = Math.ceil(0.01 * paybyp1);
+      if ((paybyp1 - rewardarc1 + gainp1) < 1) {
+        payowner1 = 0
+      } else {
+        payowner1 = paybyp1 - rewardarc1 + gainp1
+      }
+
+      // if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
       let message = '1st:  player=' + paybyp1 + ' (Arc≈' + rewardarc1 + ', Tot profit≈' + gainp1 + '),   I\'ll pay you back=' + payowner1 ;
       let effi = Math.ceil((payowner1 / totfpreq) * 100);
       let tolevel = totfpreq - paybyp1
-      let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
       this.setState({ rewardarc1: rewardarc1, paybyp1: paybyp1, lossp1: lossp1, payowner1: payowner1, gainp1: gainp1, msg1: message, summessage: summessage });
     }
 
@@ -120,14 +126,20 @@ class Fasttrackng extends Component {
       paybyp2 = Math.ceil(paybyp1 / 2);
       lossp2 = paybyp2 - rewardarc2;
       if (paybyp2 < rewardarc2) { lossp2 = 0};
-      payowner2 = Math.ceil(1.3 * lossp2);
-      gainp2 = payowner2 - lossp2;
-      if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
+
+      gainp2 = Math.ceil(0.02 * paybyp2);
+      if ((paybyp2 - rewardarc2 + gainp2) < 1) {
+        payowner2 = 0
+      } else {
+        payowner2 = paybyp2 - rewardarc2 + gainp2
+      }
+
+      // if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
       let message = '2nd:  player=' + paybyp2 + ' (Arc≈' + rewardarc2 + ', Tot profit≈' + gainp2 + '),   I\'ll pay you back=' + payowner2 ;
       let totpayowner = payowner1 + payowner2;
       let tolevel = totfpreq - (paybyp1 + paybyp2);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st and 2nd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      let summessage = 'With 1st and 2nd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
       this.setState({ rewardarc2: rewardarc2, paybyp2: paybyp2, lossp2: lossp2, payowner2: payowner2, gainp2: gainp2, msg2: message, summessage: summessage  });
     }
 
@@ -136,14 +148,20 @@ class Fasttrackng extends Component {
       paybyp3 = Math.ceil(paybyp2 / 2);
       lossp3 = paybyp3 - rewardarc3;
       if (paybyp3 < rewardarc3) { lossp3 = 0};
-      payowner3 = Math.ceil(1.4 * lossp3);
-      gainp3 = payowner3 - lossp3;
-      if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
+
+      gainp3 = Math.ceil(0.04 * paybyp3);
+      if ((paybyp3 - rewardarc3 + gainp3) < 1) {
+        payowner3 = 0
+      } else {
+        payowner3 = paybyp3 - rewardarc3 + gainp3
+      }
+
+      // if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
       let message = '3rd:  player=' + paybyp3 + ' (Arc≈' + rewardarc3 + ', Tot profit≈' + gainp3 + '),   I\'ll pay you back=' + payowner3 ;
       let totpayowner = payowner1 + payowner2 + payowner3;
       let tolevel = totfpreq - ( paybyp1 + paybyp2 + paybyp3);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st, 2nd and 3rd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      let summessage = 'With 1st, 2nd and 3rd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
       this.setState({ rewardarc3: rewardarc3, paybyp3: paybyp3, lossp3: lossp3, payowner3: payowner3, gainp3: gainp3, msg3: message, summessage: summessage });
     }
 
@@ -152,24 +170,26 @@ class Fasttrackng extends Component {
       paybyp4 = Math.ceil(paybyp3 / 2);
       lossp4 = paybyp4 - rewardarc4;
       if (paybyp4 < rewardarc4) { lossp4 = 0};
-      payowner4 = Math.ceil(1.4 * lossp4);
-      gainp4 = payowner4 - lossp4;
-      if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
+
+      gainp4 = Math.ceil(0.08 * paybyp4);
+      if ((paybyp4 - rewardarc4 + gainp4) < 1) {
+        payowner4 = 0
+      } else {
+        payowner4 = paybyp4 - rewardarc4 + gainp4
+      }
+
+      // if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
       let message = '4th:  player=' + paybyp4 + ' (Arc≈' + rewardarc4 + ',Tot profit≈' + gainp4 + '),   I\'ll pay you back=' + payowner4 ;
       let totpayowner = payowner1 + payowner2 + payowner3 + payowner4;
       let tolevel = totfpreq - (paybyp1 + paybyp2 + paybyp3 + paybyp4);
       let effi = Math.ceil(( totpayowner / totfpreq) * 100);
-      let summessage = 'With 1st, 2nd, 3rd and 4th place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the BG will be ' + tolevel + '.';
+      let summessage = 'With 1st, 2nd, 3rd and 4th place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
       this.setState({ rewardarc4: rewardarc4, paybyp4: paybyp4, lossp4: lossp4, payowner4: payowner4, gainp4: gainp4, msg4: message, summessage: summessage });
     }
   }
 
 
   handleChange = (event) => {
-    /*   TODO:
-       * nb for player to overtake can't be above level cost
-       * nb for player to overtake can't be above current deposit
-    */
     const { name, value } = event.target;
     let intValue = parseInt(value, 10);
     if (intValue < 0) intValue = 0;
@@ -195,7 +215,7 @@ class Fasttrackng extends Component {
           <Grid container spacing={24}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
-                GB FastTrack Version 2
+                Great Building FastTrack
               </Typography>
             </Grid>
             <Grid item xs={12}>
