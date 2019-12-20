@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0f5b1a8e659f020a98b581a78aa3e10f",
+    "revision": "96ae0480768ba5b177580ed82f581eea",
     "url": "/forgecalc/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/forgecalc/static/js/2.7711fc3b.chunk.js"
   },
   {
-    "revision": "1c8a35b19947a422e1a3",
-    "url": "/forgecalc/static/js/main.0e5c74ff.chunk.js"
+    "revision": "12c5868bdb410328381f",
+    "url": "/forgecalc/static/js/main.ba2bbe24.chunk.js"
   },
   {
     "revision": "b3d1e41805acb4e2d5be",
