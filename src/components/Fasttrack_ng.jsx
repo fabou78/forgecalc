@@ -106,7 +106,7 @@ class Fasttrackng extends Component {
       lossp1 = paybyp1 - rewardarc1;
       if (paybyp1 < rewardarc1) { lossp1 = 0}; // Taking into account Arc reward is greater than what p1 pays in
 
-      gainp1 = Math.ceil(0.01 * paybyp1);
+      gainp1 = Math.ceil(0.02 * paybyp1);
       if ((paybyp1 - rewardarc1 + gainp1) < 1) {
         payowner1 = 0
       } else {
@@ -127,7 +127,7 @@ class Fasttrackng extends Component {
       lossp2 = paybyp2 - rewardarc2;
       if (paybyp2 < rewardarc2) { lossp2 = 0};
 
-      gainp2 = Math.ceil(0.02 * paybyp2);
+      gainp2 = Math.ceil(0.04 * paybyp2);
       if ((paybyp2 - rewardarc2 + gainp2) < 1) {
         payowner2 = 0
       } else {
@@ -149,7 +149,7 @@ class Fasttrackng extends Component {
       lossp3 = paybyp3 - rewardarc3;
       if (paybyp3 < rewardarc3) { lossp3 = 0};
 
-      gainp3 = Math.ceil(0.04 * paybyp3);
+      gainp3 = Math.ceil(0.08 * paybyp3);
       if ((paybyp3 - rewardarc3 + gainp3) < 1) {
         payowner3 = 0
       } else {
@@ -171,7 +171,7 @@ class Fasttrackng extends Component {
       lossp4 = paybyp4 - rewardarc4;
       if (paybyp4 < rewardarc4) { lossp4 = 0};
 
-      gainp4 = Math.ceil(0.08 * paybyp4);
+      gainp4 = Math.ceil(0.16 * paybyp4);
       if ((paybyp4 - rewardarc4 + gainp4) < 1) {
         payowner4 = 0
       } else {
