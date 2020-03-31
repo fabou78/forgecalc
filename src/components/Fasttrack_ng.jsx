@@ -171,7 +171,7 @@ class Fasttrackng extends Component {
       lossp4 = paybyp4 - rewardarc4;
       if (paybyp4 < rewardarc4) { lossp4 = 0};
 
-      gainp4 = Math.ceil(0.8 * paybyp4);
+      gainp4 = Math.ceil(0.08 * paybyp4);
       if ((paybyp4 - rewardarc4 + gainp4) < 1) {
         payowner4 = 0
       } else {
