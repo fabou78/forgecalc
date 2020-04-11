@@ -67,19 +67,11 @@ class One9 extends Component {
     reward3: 120,
     reward4: 30,
     reward5: 5,
-
-
-
-
-
-
-
-
-
     msg1: '',
     msg2: '',
     msg3: '',
     msg4: '',
+    msg5: '',
     summessage: '',
     fielderror: false,
     msgcolor: '#000000',
@@ -108,8 +100,6 @@ class One9 extends Component {
     // Resetting all messages
     this.setState({ msg1: '', msg2:'', msg3:'', summessage: '' })
 
-
-
     if (reward1>0) {
       arcbonus1 = Math.ceil(reward1 * bonus)
       secured = totfpreq - (2 * arcbonus1)
@@ -120,14 +110,10 @@ class One9 extends Component {
         remain1 = arcbonus1 + secured
         owner_tot1 = 0
       }
-      // if (payowner1 === 0) { gainp1 = rewardarc1 - paybyp1 };
-      // let message = '1st:  player=' + paybyp1 + ' (Arc≈' + rewardarc1 + ', Tot profit≈' + gainp1 + '),   I\'ll pay you back=' + payowner1 ;
-      // let effi = Math.ceil((payowner1 / totfpreq) * 100);
-      // let tolevel = totfpreq - paybyp1
+      let message = '1st place available for ' + arcbonus1 + ' FP';
       // let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      this.setState({ arcbonus1: arcbonus1, owner_tot1:owner_tot1 });
+      this.setState({ arcbonus1: arcbonus1, owner_tot1: owner_tot1, msg1: message });
     }
-
 
     if (reward2>0) {
       arcbonus2 = Math.ceil(reward2 * bonus)
@@ -139,15 +125,10 @@ class One9 extends Component {
         remain2 = arcbonus2 + secured
         owner_tot2 = owner_tot1
       }
-      // if (payowner2 === 0) { gainp2 = rewardarc2 - paybyp2 };
-      // let message = '2nd:  player=' + paybyp2 + ' (Arc≈' + rewardarc2 + ', Tot profit≈' + gainp2 + '),   I\'ll pay you back=' + payowner2 ;
-      // let totpayowner = payowner1 + payowner2;
-      // let tolevel = totfpreq - (paybyp1 + paybyp2);
-      // let effi = Math.ceil(( totpayowner / totfpreq) * 100);
+      let message = '2nd place available for ' + arcbonus2 + ' FP';
       // let summessage = 'With 1st and 2nd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      this.setState({ arcbonus2: arcbonus2, owner_tot2:owner_tot2 });
+      this.setState({ arcbonus2: arcbonus2, owner_tot2:owner_tot2, msg2: message });
     }
-
 
     if (reward3>0) {
       arcbonus3 = Math.ceil(reward3 * bonus)
@@ -159,18 +140,10 @@ class One9 extends Component {
         remain3 = arcbonus3 + secured
         owner_tot3 = owner_tot2
       }
-
-
-      // if (payowner3 === 0) { gainp3 = rewardarc3 - paybyp3 };
-      // let message = '3rd:  player=' + paybyp3 + ' (Arc≈' + rewardarc3 + ', Tot profit≈' + gainp3 + '),   I\'ll pay you back=' + payowner3 ;
-      // let totpayowner = payowner1 + payowner2 + payowner3;
-      // let tolevel = totfpreq - ( paybyp1 + paybyp2 + paybyp3);
-      // let effi = Math.ceil(( totpayowner / totfpreq) * 100);
+      let message = '3rd place available for ' + arcbonus3 + ' FP';
       // let summessage = 'With 1st, 2nd and 3rd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      // this.setState({ rewardarc3: rewardarc3, paybyp3: paybyp3, lossp3: lossp3, payowner3: payowner3, gainp3: gainp3, msg3: message, summessage: summessage });
-      this.setState({ arcbonus3: arcbonus3, owner_tot3:owner_tot3 });
+      this.setState({ arcbonus3: arcbonus3, owner_tot3:owner_tot3, msg3: message });
     }
-
 
     if (reward4>0) {
       arcbonus4 = Math.ceil(reward4 * bonus)
@@ -182,19 +155,10 @@ class One9 extends Component {
         remain4 = arcbonus4 + secured
         owner_tot4 = owner_tot3
       }
-      this.setState({ arcbonus4: arcbonus4, owner_tot4:owner_tot4 });
-
-
-
-      // if (payowner4 === 0) { gainp4 = rewardarc4 - paybyp4 };
-      // let message = '4th:  player=' + paybyp4 + ' (Arc≈' + rewardarc4 + ',Tot profit≈' + gainp4 + '),   I\'ll pay you back=' + payowner4 ;
-      // let totpayowner = payowner1 + payowner2 + payowner3 + payowner4;
-      // let tolevel = totfpreq - (paybyp1 + paybyp2 + paybyp3 + paybyp4);
-      // let effi = Math.ceil(( totpayowner / totfpreq) * 100);
+      let message = '4th place available for ' + arcbonus4 + ' FP';
+      this.setState({ arcbonus4: arcbonus4, owner_tot4:owner_tot4, msg4: message });
       // let summessage = 'With 1st, 2nd, 3rd and 4th place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      // this.setState({ rewardarc4: rewardarc4, paybyp4: paybyp4, lossp4: lossp4, payowner4: payowner4, gainp4: gainp4, msg4: message, summessage: summessage });
     }
-
 
     if (reward5>0) {
       arcbonus5 = Math.ceil(reward5 * bonus)
@@ -206,7 +170,8 @@ class One9 extends Component {
         remain5 = arcbonus5 + secured
         owner_tot5 = owner_tot4
       }
-      this.setState({ arcbonus5: arcbonus5, owner_tot5:owner_tot5 });
+      let message = '5th place available for ' + arcbonus5 + ' FP';
+      this.setState({ arcbonus5: arcbonus5, owner_tot5:owner_tot5, msg5: message });
     }
   }
 
@@ -417,7 +382,7 @@ class One9 extends Component {
                   </Typography>
                   <Typography>{this.state.summessage}</Typography>
                   <Typography className={classes.result}>
-                    <strong>Copy and paste the following into one of the guild "Fast track" thread after posting your GB</strong>
+                    <strong>Double check values entered above then copy and paste the following into the guild "1.9" thread after posting your GB</strong>
                   </Typography>
                   <Typography className={classes.info2}>
                     I am opening the following places on my GB posted above:
@@ -426,6 +391,7 @@ class One9 extends Component {
                     {(this.state.msg2!=='') && <Typography>&nbsp;&nbsp;{this.state.msg2}<br></br></Typography>}
                     {(this.state.msg3!=='') && <Typography>&nbsp;&nbsp;{this.state.msg3}<br></br></Typography>}
                     {(this.state.msg4!=='') && <Typography>&nbsp;&nbsp;{this.state.msg4}<br></br></Typography>}
+                    {(this.state.msg5!=='') && <Typography>&nbsp;&nbsp;{this.state.msg5}<br></br></Typography>}
                     <br></br>
                     <strong>NOTE:</strong> Please make sure you post in order 1st, 2nd, 3rd & 4th (un-ordered posting has caused some issues in the past).
                   </Typography>
@@ -439,7 +405,7 @@ class One9 extends Component {
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>
-                  &nbsp; As of now the calc only works for BG with 0. If your GB already has FP please DO NOT use this calc.
+                  &nbsp; As of now the calc only works for GB at 0 FP. If your GB already has FP please DO NOT use this calc and another cal.
                 </span>
               </Typography>
             </Grid>
