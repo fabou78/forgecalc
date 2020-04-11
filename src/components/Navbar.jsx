@@ -41,7 +41,7 @@ class Navbar extends Component {
     return (
       <div className={classes.root}>
         <AppBar className={classes.appBar} position='static' color='primary'>
-          <Grid container spacing={24} alignItems='baseline'>
+          <Grid container spacing={0} alignItems='baseline'>
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>

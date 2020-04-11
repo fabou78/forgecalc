@@ -237,7 +237,7 @@ class One9 extends Component {
     return (
       <div className={classes.layout}>
         <Paper className={classes.paper} elevation={4}>
-          <Grid container spacing={24}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
               <Typography variant='h4' align='center' color='primary'>
                 1.9 Thread Calculator
@@ -245,10 +245,10 @@ class One9 extends Component {
             </Grid>
             <Grid item xs={12}>
               <Typography variant='subtitle2'>
-                <p fontStyle="italic">A simple and basic 1.9 cal for the IntrepidOne</p>
+                <p fontStyle="italic">A simple and basic 1.9 calculator for the IntrepidOne</p>
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
-                If you are not familiar with 1.9 swap principle read here.
+                If you are not familiar with 1.9 swap principle read more here.
               </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
@@ -315,7 +315,7 @@ class One9 extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <br></br>
+              <br></br><br></br>
               <Table className={classes.table} size="small">
                 <TableHead>
                   {(!isNaN(this.state.totfpreq) && this.state.totfpreq!==0 &&
@@ -426,8 +426,8 @@ class One9 extends Component {
                     {(this.state.msg2!=='') && <Typography>&nbsp;&nbsp;{this.state.msg2}<br></br></Typography>}
                     {(this.state.msg3!=='') && <Typography>&nbsp;&nbsp;{this.state.msg3}<br></br></Typography>}
                     {(this.state.msg4!=='') && <Typography>&nbsp;&nbsp;{this.state.msg4}<br></br></Typography>}
-                    <p><strong>NOTE:</strong> Please make sure you post in order 1st, 2nd, 3rd & 4th (un-ordered posting has caused some issues in the past).</p>
-
+                    <br></br>
+                    <strong>NOTE:</strong> Please make sure you post in order 1st, 2nd, 3rd & 4th (un-ordered posting has caused some issues in the past).
                   </Typography>
                 </Fragment>
               }
