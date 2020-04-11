@@ -8,7 +8,7 @@ import Profit from './components/Profit';
 import Navbar from './components/Navbar';
 import Blockplace from './components/Blockplace';
 import Fasttrackng from './components/Fasttrack_ng';
-import Arcstasts from './components/Arcstats';
+import One9 from './components/One9';
 
 
 const theme = createMuiTheme({
@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = {
-    loadpage: 'secure'
+    loadpage: 'one9'
   }
 
   handleClick = (event) => {
@@ -38,8 +38,8 @@ class App extends Component {
     if (name === 'fastng') {
       this.setState({ loadpage: 'fastng' });
     };
-    if (name === 'arcstats') {
-      this.setState({ loadpage: 'arcstats' });
+    if (name === 'one9') {
+      this.setState({ loadpage: 'one9' });
     };
   }
 
@@ -58,8 +58,8 @@ class App extends Component {
           { (this.state.loadpage === 'fastng') &&
             <Fasttrackng />
           }
-          { (this.state.loadpage === 'arcstats') &&
-            <Arcstasts />
+          { (this.state.loadpage === 'one9') &&
+            <One9 />
           }
         </MuiThemeProvider>
       </Fragment>

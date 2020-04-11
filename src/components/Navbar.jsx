@@ -25,7 +25,7 @@ const styles = theme => ({
     }
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(),
   },
   version: {
     fontSize: '14px',
@@ -45,7 +45,7 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.3.3a</span>
+                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.3.4</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
@@ -80,13 +80,13 @@ class Navbar extends Component {
                 FastTrack
               </Button>
               <Button
-                name="arcstats"
+                name="one9"
                 variant="contained"
                 color="secondary"
                 className={classes.button}
                 onClick={handleClick}
               >
-                Guild Arc Stats
+                1.9 Calc
               </Button>
             </Toolbar>
           </Grid>
