@@ -1,4 +1,4 @@
-# [1.9 Thread info](https://github.com/fabou78/forgecalc/blob/master/ONE9.md)
+# [1.9 Thread HowTo](https://github.com/fabou78/forgecalc/blob/master/ONE9.md)
 
 Some explanation on how 1.9 thread works in Intrepid Ones
 
@@ -14,7 +14,7 @@ The 1.9 thread will be an exclusively non-profit thread that will allow GB owner
 
 
 ## Risk
-There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra .9 FP (sniping). In order to reduce this risk, the owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed here **[Guild Arc stats](http://fabou78.pythonanywhere.com/arcstats/)**  with a “1.9” next to their names.
+There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra .9 FP (sniping). In order to reduce this risk, the owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed in **[Guild Arc Stats](http://fabou78.pythonanywhere.com/arcstats/)**  with a “1.9” next to their names.
 
 
 ## Challenge for our Guild
