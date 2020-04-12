@@ -31,7 +31,7 @@ const styles = theme => ({
     },
   },
   result: {
-    marginTop: 30
+    marginTop: 10
   },
   info: {
     marginTop: 20
@@ -213,7 +213,8 @@ class One9 extends Component {
                 <p fontStyle="italic">A simple and basic 1.9 calculator for the IntrepidOne</p>
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
-                If you are not familiar with 1.9 swap principle read more here.
+                If you are not familiar with 1.9 swap principle and how it compares to FastTrack read&nbsp;
+                <strong><a href="https://github.com/fabou78/forgecalc/blob/master/README.md" target="_blank">this</a>.</strong>
               </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
@@ -227,52 +228,52 @@ class One9 extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <TextField
                 value={this.state.reward1}
                 error={this.state.fielderror}
                 name='reward1'
-                label='1st place reward'
+                label='Reward 1st'
                 type='number'
                 margin='normal'
                 onChange={this.handleChange}
               />
-            </Grid>
-            <Grid item xs={3}>
+            </Grid>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Grid item xs={2}>
               <TextField
                 value={this.state.reward2}
                 name='reward2'
-                label='2nd place reward'
+                label='Reward 2nd'
                 type='number'
                 margin='normal'
                 onChange={this.handleChange}
               />
-            </Grid>
-            <Grid item xs={3}>
+            </Grid>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Grid item xs={2}>
               <TextField
                 value={this.state.reward3}
                 name='reward3'
-                label='3rd place reward'
+                label='Reward 3rd'
                 type='number'
                 margin='normal'
                 onChange={this.handleChange}
               />
-            </Grid>
-            <Grid item xs={3}>
+            </Grid>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Grid item xs={2}>
               <TextField
                 value={this.state.reward4}
                 name='reward4'
-                label='4th place reward'
+                label='Reward 4th'
                 type='number'
                 margin='normal'
                 onChange={this.handleChange}
               />
-            </Grid>
-            <Grid item xs={3}>
+            </Grid>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Grid item xs={2}>
               <TextField
                 value={this.state.reward5}
                 name='reward5'
-                label='5th place reward'
+                label='Reward 5th'
                 type='number'
                 margin='normal'
                 onChange={this.handleChange}
@@ -291,7 +292,6 @@ class One9 extends Component {
                         <TableCell align="center">Base Reward</TableCell>
                         <TableCell align="center">Total needed from Owner</TableCell>
                         <TableCell align="center">Investor puts</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -305,7 +305,6 @@ class One9 extends Component {
                         <TableCell align="center">{this.state.reward1}</TableCell>
                         <TableCell align="center">{this.state.owner_tot1}</TableCell>
                         <TableCell align="center">{this.state.arcbonus1}</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -318,7 +317,6 @@ class One9 extends Component {
                         <TableCell align="center">{this.state.reward2}</TableCell>
                         <TableCell align="center">{this.state.owner_tot2}</TableCell>
                         <TableCell align="center">{this.state.arcbonus2}</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -332,7 +330,6 @@ class One9 extends Component {
                         <TableCell align="center">{this.state.reward3}</TableCell>
                         <TableCell align="center">{this.state.owner_tot3}</TableCell>
                         <TableCell align="center">{this.state.arcbonus3}</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -347,7 +344,6 @@ class One9 extends Component {
                         <TableCell align="center">{this.state.reward4}</TableCell>
                         <TableCell align="center">{this.state.owner_tot4}</TableCell>
                         <TableCell align="center">{this.state.arcbonus4}</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -364,7 +360,6 @@ class One9 extends Component {
                         <TableCell align="center">{this.state.reward5}</TableCell>
                         <TableCell align="center">{this.state.owner_tot5}</TableCell>
                         <TableCell align="center">{this.state.arcbonus5}</TableCell>
-                        <TableCell align="center">spare</TableCell>
                       </TableRow>
                     </Fragment>
                   }
@@ -376,13 +371,13 @@ class One9 extends Component {
               {(!isNaN(this.state.totfpreq) && this.state.totfpreq!==0 &&
                 !isNaN(this.state.reward1) && this.state.reward1!==0 && this.state.fielderror===false) &&
                 <Fragment>
-                  <br></br>
+                  <br></br><br></br>
                   <Typography variant='body1' align='left' >
                     <strong>Summary: </strong>
                   </Typography>
                   <Typography>{this.state.summessage}</Typography>
                   <Typography className={classes.result}>
-                    <strong>Double check values entered above then copy and paste the following into the guild "1.9" thread after posting your GB</strong>
+                    <strong>Double check values entered above then copy and paste the following into the guild "1.9" thread after posting your GB.</strong>
                   </Typography>
                   <Typography className={classes.info2}>
                     I am opening the following places on my GB posted above:
@@ -393,7 +388,7 @@ class One9 extends Component {
                     {(this.state.msg4!=='') && <Typography>&nbsp;&nbsp;{this.state.msg4}<br></br></Typography>}
                     {(this.state.msg5!=='') && <Typography>&nbsp;&nbsp;{this.state.msg5}<br></br></Typography>}
                     <br></br>
-                    <strong>NOTE:</strong> Please make sure you post in order 1st, 2nd, 3rd & 4th (un-ordered posting has caused some issues in the past).
+                    {/* <strong>NOTE:</strong> Please make sure you post in order 1st, 2nd, 3rd & 4th (un-ordered posting has caused some issues in the past). */}
                   </Typography>
                 </Fragment>
               }
@@ -405,7 +400,7 @@ class One9 extends Component {
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>
-                  &nbsp; As of now the calc only works for GB at 0 FP. If your GB already has FP please DO NOT use this calc and another cal.
+                  &nbsp; As of now the calc only works for GB at 0 FP. If your GB already has FP please DO NOT use this calc and try another one.
                 </span>
               </Typography>
             </Grid>
