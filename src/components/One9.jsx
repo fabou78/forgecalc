@@ -51,7 +51,7 @@ const styles = theme => ({
 class One9 extends Component {
   state = {
     bonus: 1.9,
-    totfpreq: 2667,
+    totfpreq: 0,
     owner_tot1: 0,
     owner_tot2: 0,
     owner_tot3: 0,
@@ -62,11 +62,11 @@ class One9 extends Component {
     arcbonus3: 0,
     arcbonus4: 0,
     arcbonus5: 0,
-    reward1: 715,
-    reward2: 360,
-    reward3: 120,
-    reward4: 30,
-    reward5: 5,
+    reward1: 0,
+    reward2: 0,
+    reward3: 0,
+    reward4: 0,
+    reward5: 0,
     msg1: '',
     msg2: '',
     msg3: '',
@@ -214,7 +214,7 @@ class One9 extends Component {
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with 1.9 swap principle and how it compares to FastTrack read&nbsp;
-                <strong><a href="https://github.com/fabou78/forgecalc/blob/master/README.md" target="_blank">this</a>.</strong>
+                <strong><a href="https://github.com/fabou78/forgecalc/blob/master/ONE9.md" target="_blank">this</a>.</strong>
               </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
