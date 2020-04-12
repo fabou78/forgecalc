@@ -1,9 +1,9 @@
-# [1.9 Thread innfo](https://github.com/fabou78/forgecalc/blob/master/ONE9.md) &middot;
+# [1.9 Thread info](https://github.com/fabou78/forgecalc/blob/master/ONE9.md)
 
 Some explanation on how 1.9 thread works in Intrepid Ones
 
 ## Summary
-The 1.9 thread will be an exclusively non-profit thread that will allow GB owners to get extra FP from investors owning an Arc80. The investors will pay in the full FP amount + their Arc bonus (x1.9) gained from the transaction making zero profit.
+The 1.9 thread will be an exclusively non-profit thread that will allow GB owners to get extra FP from investors owning an Arc80. The investors will pay in the full FP amount + their Arc bonus (x.9) gained from the transaction making zero profit.
 
 
 ## Responsibility
@@ -14,7 +14,7 @@ The 1.9 thread will be an exclusively non-profit thread that will allow GB owner
 
 
 ## Risk
-There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra x1.9 (sniping). In order to reduce this risk, this owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed [here](http://fabou78.pythonanywhere.com/arcstats/)  with a “1.9” next to their names.
+There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra .9 FP (sniping). In order to reduce this risk, the owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed here **[Guild Arc stats](http://fabou78.pythonanywhere.com/arcstats/)**  with a “1.9” next to their names.
 
 
 ## Challenge for our Guild
@@ -29,7 +29,7 @@ Fasttrack would cost a bit more to the owner but will give an opportunity to get
 2. Owner double check the correct values are entered in the calc
 3. Owner post GB in the guild 1.9 thread (it is advised to check if someone with an Arc80 is online before posting)
 4. Owner copy and paste the text from the app in the 1.9 thread
-5. Pray for someone to pick it up… :blush:
+5. Owner pray for someone to pick it up quickly… :blush:
 6. Investor state which position you want to take and check that your position would be secure after you take it
 7. Investor put the exact requested amount If the position can be secured
 8. Investor always make contributions in numerical order ie. 1, 2, 3, 4
