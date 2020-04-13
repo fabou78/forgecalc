@@ -116,7 +116,7 @@ class One9 extends Component {
       }
       let message = '1st place available for ' + arcbonus1 + ' FP';
       let summessage
-      if (owner_tot1 > 0) summessage = 'The total cost to the owner up to 1st place is ' + owner_tot1 + ' FP.';
+      if (owner_tot1 > 0) summessage = 'The total cost for the owner up to 1st place is ' + owner_tot1 + ' FP.';
       this.setState({ arcbonus1: arcbonus1, owner_tot1: owner_tot1, msg1: message, summessage: summessage });
     }
 
@@ -138,7 +138,7 @@ class One9 extends Component {
       }
       let message = '2nd place available for ' + arcbonus2 + ' FP';
       let summessage
-      if (owner_tot2 > 0) summessage = 'The total cost to the owner up to 2nd place is ' + owner_tot2 + ' FP.';
+      if (owner_tot2 > 0) summessage = 'The total cost for the owner up to 2nd place is ' + owner_tot2 + ' FP.';
       this.setState({ arcbonus2: arcbonus2, owner_tot2:owner_tot2, msg2: message, owner_tot2_str: owner_tot2_str, summessage: summessage });
     }
 
@@ -160,7 +160,7 @@ class One9 extends Component {
       }
       let message = '3rd place available for ' + arcbonus3 + ' FP';
       let summessage
-      if (owner_tot3 > 0)  summessage = 'The total cost to the owner up to 3rd place is ' + owner_tot3 + ' FP.';
+      if (owner_tot3 > 0)  summessage = 'The total cost for the owner up to 3rd place is ' + owner_tot3 + ' FP.';
       this.setState({ arcbonus3: arcbonus3, owner_tot3:owner_tot3, msg3: message, owner_tot3_str: owner_tot3_str, summessage: summessage });
     }
 
@@ -182,7 +182,7 @@ class One9 extends Component {
       }
       let message = '4th place available for ' + arcbonus4 + ' FP';
       let summessage
-      if (owner_tot4 > 0)  summessage = 'The total cost to the owner up to 4th place is ' + owner_tot4 + ' FP.';
+      if (owner_tot4 > 0)  summessage = 'The total cost for the owner up to 4th place is ' + owner_tot4 + ' FP.';
       this.setState({ arcbonus4: arcbonus4, owner_tot4:owner_tot4, msg4: message, owner_tot4_str: owner_tot4_str, summessage: summessage });
     }
 
@@ -204,7 +204,7 @@ class One9 extends Component {
       }
       let message = '5th place available for ' + arcbonus5 + ' FP';
       let summessage
-      if (owner_tot5 > 0)  summessage = 'The total cost to the owner up to 5th place is ' + owner_tot5 + ' FP after this, there will be ' + arcbonus5 + ' FP left to level the building.';
+      if (owner_tot5 > 0)  summessage = 'The total cost for the owner up to 5th place is ' + owner_tot5 + ' FP after this, there will be ' + arcbonus5 + ' FP left to level the building.';
       this.setState({ arcbonus5: arcbonus5, owner_tot5:owner_tot5, msg5: message, owner_tot5_str: owner_tot5_str,summessage: summessage });
     }
   }
