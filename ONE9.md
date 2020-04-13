@@ -8,7 +8,7 @@ The 1.9 thread will be an exclusively non-profit thread that will allow GB owner
 
 ## Responsibility
 
-* ``Owner`` - Before posting his GB, the owner **MUST** ensure that an investor’s place(s) is/are secured and can’t be taken over by someone else. This is accomplished by the owner adding FP to his own GB until it reaches a safe level. Depending on GB level and place posted, adding FP to own GB might or might not be required
+* ``Owner`` - Before posting his GB, the owner **MUST** ensure that an investor’s place(s) is/are secured and can’t be taken over by someone else. This is accomplished by the owner adding FP to his own GB until it reaches a safe level. Depending on GB level and place posted, adding FP to own GB might or might not be required for certain places.
 
 * ``Investor`` - The investor **MUST** ensure that he can’t be sniped before investing the required FP. This can be simulated but using the link belowThe below links can be used for this
 
