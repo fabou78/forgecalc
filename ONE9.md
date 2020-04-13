@@ -1,6 +1,6 @@
 # [1.9 Thread HowTo](https://github.com/fabou78/forgecalc/blob/master/ONE9.md)
 
-Some explanation on how 1.9 thread works in Intrepid Ones
+Some explanation on how 1.9 thread works in Intrepid Ones (en5)
 
 ## Summary
 The 1.9 thread will be an exclusively non-profit thread that will allow GB owners to get extra FP from investors owning an Arc80. The investors will pay in the full FP amount + their Arc bonus (x.9) gained from the transaction making zero profit.

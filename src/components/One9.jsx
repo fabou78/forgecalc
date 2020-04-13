@@ -52,21 +52,25 @@ class One9 extends Component {
   state = {
     bonus: 1.9,
     totfpreq: 0,
-    owner_tot1: 0,
-    owner_tot2: 0,
-    owner_tot3: 0,
-    owner_tot4: 0,
-    owner_tot5: 0,
-    arcbonus1: 0,
-    arcbonus2: 0,
-    arcbonus3: 0,
-    arcbonus4: 0,
-    arcbonus5: 0,
     reward1: 0,
     reward2: 0,
     reward3: 0,
     reward4: 0,
     reward5: 0,
+    owner_tot1: 0,
+    owner_tot2: 0,
+    owner_tot3: 0,
+    owner_tot4: 0,
+    owner_tot5: 0,
+    owner_tot2_str: '',
+    owner_tot3_str: '',
+    owner_tot4_str: '',
+    owner_tot5_str: '',
+    arcbonus1: 0,
+    arcbonus2: 0,
+    arcbonus3: 0,
+    arcbonus4: 0,
+    arcbonus5: 0,
     msg1: '',
     msg2: '',
     msg3: '',
@@ -83,10 +87,10 @@ class One9 extends Component {
 
     var secured;
     var arcbonus1, remain1, owner_tot1;
-    var arcbonus2, remain2, owner_tot2;
-    var arcbonus3, remain3, owner_tot3;
-    var arcbonus4, remain4, owner_tot4;
-    var arcbonus5, remain5, owner_tot5;
+    var arcbonus2, remain2, owner_tot2, owner_tot2_str;
+    var arcbonus3, remain3, owner_tot3, owner_tot3_str;
+    var arcbonus4, remain4, owner_tot4, owner_tot4_str;
+    var arcbonus5, remain5, owner_tot5, owner_tot5_str;
 
 
 
@@ -111,8 +115,9 @@ class One9 extends Component {
         owner_tot1 = 0
       }
       let message = '1st place available for ' + arcbonus1 + ' FP';
-      // let summessage = 'With only 1st place open, the total contribution by owner will be ' + payowner1 + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      this.setState({ arcbonus1: arcbonus1, owner_tot1: owner_tot1, msg1: message });
+      let summessage
+      if (owner_tot1 > 0) summessage = 'The total cost to the owner up to 1st place is ' + owner_tot1 + ' FP.';
+      this.setState({ arcbonus1: arcbonus1, owner_tot1: owner_tot1, msg1: message, summessage: summessage });
     }
 
     if (reward2>0) {
@@ -121,13 +126,20 @@ class One9 extends Component {
       if (secured >= 0) {
         remain2 = arcbonus2
         owner_tot2 = owner_tot1 + secured
+        if (owner_tot1 > 0){
+          owner_tot2_str = String(owner_tot2) + ' (' + String(owner_tot1) + '+' + String(secured) + ')'
+        } else {
+          owner_tot2_str = String(owner_tot2)
+        }
       } else {
         remain2 = arcbonus2 + secured
         owner_tot2 = owner_tot1
+        owner_tot2_str = String(owner_tot1)
       }
       let message = '2nd place available for ' + arcbonus2 + ' FP';
-      // let summessage = 'With 1st and 2nd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      this.setState({ arcbonus2: arcbonus2, owner_tot2:owner_tot2, msg2: message });
+      let summessage
+      if (owner_tot2 > 0) summessage = 'The total cost to the owner up to 2nd place is ' + owner_tot2 + ' FP.';
+      this.setState({ arcbonus2: arcbonus2, owner_tot2:owner_tot2, msg2: message, owner_tot2_str: owner_tot2_str, summessage: summessage });
     }
 
     if (reward3>0) {
@@ -136,13 +148,20 @@ class One9 extends Component {
       if (secured >= 0) {
         remain3 = arcbonus3
         owner_tot3 = owner_tot2 + secured
+        if (owner_tot2 > 0){
+          owner_tot3_str = String(owner_tot3) + ' (' + String(owner_tot2) + '+' + String(secured) + ')'
+        } else {
+          owner_tot3_str = String(owner_tot3)
+        }
       } else {
         remain3 = arcbonus3 + secured
         owner_tot3 = owner_tot2
+        owner_tot3_str = String(owner_tot2)
       }
       let message = '3rd place available for ' + arcbonus3 + ' FP';
-      // let summessage = 'With 1st, 2nd and 3rd place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
-      this.setState({ arcbonus3: arcbonus3, owner_tot3:owner_tot3, msg3: message });
+      let summessage
+      if (owner_tot3 > 0)  summessage = 'The total cost to the owner up to 3rd place is ' + owner_tot3 + ' FP.';
+      this.setState({ arcbonus3: arcbonus3, owner_tot3:owner_tot3, msg3: message, owner_tot3_str: owner_tot3_str, summessage: summessage });
     }
 
     if (reward4>0) {
@@ -151,13 +170,20 @@ class One9 extends Component {
       if (secured >= 0) {
         remain4 = arcbonus4
         owner_tot4 = owner_tot3 + secured
+        if (owner_tot3 > 0){
+          owner_tot4_str = String(owner_tot4) + ' (' + String(owner_tot3) + '+' + String(secured) + ')'
+        } else {
+          owner_tot4_str = String(owner_tot4)
+        }
       } else {
         remain4 = arcbonus4 + secured
         owner_tot4 = owner_tot3
+        owner_tot4_str = String(owner_tot3)
       }
       let message = '4th place available for ' + arcbonus4 + ' FP';
-      this.setState({ arcbonus4: arcbonus4, owner_tot4:owner_tot4, msg4: message });
-      // let summessage = 'With 1st, 2nd, 3rd and 4th place open, the total contribution by owner will be ' + totpayowner + ' FP (' + effi + '% of total required FP). The total FP remaining to level the GB will be ' + tolevel + '.';
+      let summessage
+      if (owner_tot4 > 0)  summessage = 'The total cost to the owner up to 4th place is ' + owner_tot4 + ' FP.';
+      this.setState({ arcbonus4: arcbonus4, owner_tot4:owner_tot4, msg4: message, owner_tot4_str: owner_tot4_str, summessage: summessage });
     }
 
     if (reward5>0) {
@@ -166,16 +192,22 @@ class One9 extends Component {
       if (secured >= 0) {
         remain5 = arcbonus5
         owner_tot5 = owner_tot4 + secured
+        if (owner_tot4 > 0){
+          owner_tot5_str = String(owner_tot5) + ' (' + String(owner_tot4) + '+' + String(secured) + ')'
+        } else {
+          owner_tot5_str = String(owner_tot5)
+        }
       } else {
         remain5 = arcbonus5 + secured
         owner_tot5 = owner_tot4
+        owner_tot5_str = String(owner_tot4)
       }
       let message = '5th place available for ' + arcbonus5 + ' FP';
-      this.setState({ arcbonus5: arcbonus5, owner_tot5:owner_tot5, msg5: message });
+      let summessage
+      if (owner_tot5 > 0)  summessage = 'The total cost to the owner up to 5th place is ' + owner_tot5 + ' FP after this, there will be ' + arcbonus5 + ' FP left to level the building.';
+      this.setState({ arcbonus5: arcbonus5, owner_tot5:owner_tot5, msg5: message, owner_tot5_str: owner_tot5_str,summessage: summessage });
     }
   }
-
-
 
 
 
@@ -214,7 +246,7 @@ class One9 extends Component {
               </Typography>
               <Typography className={classes.info2} variant='subtitle2'>
                 If you are not familiar with 1.9 swap principle and how it compares to FastTrack read&nbsp;
-                <strong><a href="https://github.com/fabou78/forgecalc/blob/master/ONE9.md" target="_blank">this</a>.</strong>
+                <strong><a href="https://github.com/fabou78/forgecalc/blob/master/ONE9.md" target="_blank" rel="noopener noreferrer">this</a>.</strong>
               </Typography><br></br>
             </Grid>
             <Grid item xs={12}>
@@ -315,7 +347,7 @@ class One9 extends Component {
                       <TableRow>
                         <TableCell component="th" scope="row">2nd place</TableCell>
                         <TableCell align="center">{this.state.reward2}</TableCell>
-                        <TableCell align="center">{this.state.owner_tot2}</TableCell>
+                        <TableCell align="center">{this.state.owner_tot2_str}</TableCell>
                         <TableCell align="center">{this.state.arcbonus2}</TableCell>
                       </TableRow>
                     </Fragment>
@@ -328,7 +360,7 @@ class One9 extends Component {
                       <TableRow>
                         <TableCell component="th" scope="row">3rd place</TableCell>
                         <TableCell align="center">{this.state.reward3}</TableCell>
-                        <TableCell align="center">{this.state.owner_tot3}</TableCell>
+                        <TableCell align="center">{this.state.owner_tot3_str}</TableCell>
                         <TableCell align="center">{this.state.arcbonus3}</TableCell>
                       </TableRow>
                     </Fragment>
@@ -342,7 +374,7 @@ class One9 extends Component {
                       <TableRow>
                         <TableCell component="th" scope="row">4th place</TableCell>
                         <TableCell align="center">{this.state.reward4}</TableCell>
-                        <TableCell align="center">{this.state.owner_tot4}</TableCell>
+                        <TableCell align="center">{this.state.owner_tot4_str}</TableCell>
                         <TableCell align="center">{this.state.arcbonus4}</TableCell>
                       </TableRow>
                     </Fragment>
@@ -358,7 +390,7 @@ class One9 extends Component {
                       <TableRow>
                         <TableCell component="th" scope="row">5th place</TableCell>
                         <TableCell align="center">{this.state.reward5}</TableCell>
-                        <TableCell align="center">{this.state.owner_tot5}</TableCell>
+                        <TableCell align="center">{this.state.owner_tot5_str}</TableCell>
                         <TableCell align="center">{this.state.arcbonus5}</TableCell>
                       </TableRow>
                     </Fragment>
@@ -400,7 +432,7 @@ class One9 extends Component {
               <Typography color='secondary'>
                 <Info className={classes.icon} />
                 <span className={classes.icon}>
-                  &nbsp; As of now the calc only works for GB at 0 FP. If your GB already has FP please DO NOT use this calc and try another one.
+                  &nbsp; As of now the calc only works for GB starting at 0 FP. If your GB already has FP please DO NOT use this calc and try another one.
                 </span>
               </Typography>
             </Grid>
