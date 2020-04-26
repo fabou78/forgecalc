@@ -413,6 +413,7 @@ class One9 extends Component {
                   </Typography>
                   <Typography className={classes.info2}>
                     I am opening the following places on my GB posted above:
+                    (Calculations obtained from https://fabou78.github.io/forgecalc/)
                     <br></br>
                     {(this.state.msg1!=='') && <Typography>&nbsp;&nbsp;{this.state.msg1}<br></br></Typography>}
                     {(this.state.msg2!=='') && <Typography>&nbsp;&nbsp;{this.state.msg2}<br></br></Typography>}

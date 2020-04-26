@@ -14,15 +14,14 @@ The 1.9 thread will be an exclusively non-profit thread that will allow GB owner
 
 
 ## Risk
-There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra .9 FP (sniping). In order to reduce this risk, the owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed in **[Guild Arc Stats](http://fabou78.pythonanywhere.com/arcstats/)**  with a “1.9” next to their names.
+There is a risk that someone outside the guild takes a place intended for a guild member and not put the extra x.9 FP (sniping). In order to reduce this risk, the owner is **STRONGLY** advised to check if there are any guild Arc80 owners online before posting. The Arc80 owners that have generously accepted to help are listed in **[Guild Arc Stats](http://fabou78.pythonanywhere.com/arcstats/)**  with a “1.9” mention next to their names.
 
 
 ## Challenge for our Guild
 We are a small guild with a small number of Arc80 players and to make matters worse, most of us are spread over the globe in different time zones. We will need to be forgiving if things don’t go as expected.
 
 ## How does 1.9 thread compare to fastrack thread?
-Fasttrack would cost a bit more to the owner but will give an opportunity to get something back from the investors (BP, FP medals). Investors make profit in fasttrack but not in 1.9 thread where they only increase their BP and medals. Both are aiming to speed up GB levelling.
-
+FastTrack would cost a bit more to the owner but will give an opportunity to get something back from the investors (BP, FP & medals). Investors make profit in FastTrack but not in 1.9 thread where they only increase their BP and medals. It is worth noting that even though investors make FP profit in FastTrack their FP inventory is more likely to decrease (unless plenty of FP available in FP pool when investing). In the 1.9 thread the exact same amount of FP used by the investor is restored back to the inventory. Any extra FP in FP pool when investing will be transferred to the FP inventory making 1.9 a good way to increase FP inventory. Both FastTrack and 1.9 are aiming to speed up GB levelling.
 
 ## How to use
 1. Owner fill their numbers in the guild 1.9 calculator

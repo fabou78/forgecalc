@@ -2,7 +2,7 @@
   "//": "http://fasttrackv2.s3-website.eu-west-2.amazonaws.com",
   "homepage": "https://fabou78.github.io/forgecalc/",
   "name": "forgecalc",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.4.3",

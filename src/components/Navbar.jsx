@@ -45,7 +45,7 @@ class Navbar extends Component {
           <Grid item xs={12} className={classes.flex}>
             <Toolbar>
               <Typography variant='h6' color='inherit'>
-                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.4.0</span>
+                <strong>Fabou's FoE Tools</strong> <span className={classes.version}> v1.4.1</span>
               </Typography>
               <div className={classes.productLogo}>
                 <Typography color='inherit'>
