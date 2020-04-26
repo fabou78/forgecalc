@@ -368,7 +368,7 @@ class Fasttrackng extends Component {
                     <strong>Copy and paste the following into one of the guild "Fast track" thread after posting your GB</strong>
                   </Typography>
                   <Typography className={classes.info2}>
-                    I am opening the following places on my GB posted above:
+                    I am opening the following places on my GB posted above:<br></br>
                     (Calculations obtained from https://fabou78.github.io/forgecalc/)
                     <br></br>
                     {(this.state.msg1!=='') && <Typography>&nbsp;&nbsp;{this.state.msg1}<br></br></Typography>}

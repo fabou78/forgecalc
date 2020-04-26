@@ -412,7 +412,7 @@ class One9 extends Component {
                     <strong>Double check values entered above then copy and paste the following into the guild "1.9" thread after posting your GB.</strong>
                   </Typography>
                   <Typography className={classes.info2}>
-                    I am opening the following places on my GB posted above:
+                    I am opening the following places on my GB posted above:<br></br>
                     (Calculations obtained from https://fabou78.github.io/forgecalc/)
                     <br></br>
                     {(this.state.msg1!=='') && <Typography>&nbsp;&nbsp;{this.state.msg1}<br></br></Typography>}
